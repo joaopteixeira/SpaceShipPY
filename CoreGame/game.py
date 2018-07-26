@@ -1,6 +1,10 @@
 import pygame
 import random
 
+from CoreGame import Settings
+
+print("Game: ",Settings.NAVIMG)
+
 WIDTH = 500  # Largura
 HEIGHT = 500  # ALTURA
 FPS = 60
@@ -43,8 +47,8 @@ background_rect = background.get_rect()
 
 
 
-img_dir = ((__file__), "RD2.png")
-player_img = pygame.image.load(("RD2.png")).convert()
+player_img = pygame.image.load(Settings.NAVIMG).convert()
+
 
 img_dir = ((__file__), "RD1.png")
 inimigo_img = pygame.image.load(("RD1.png")).convert()
