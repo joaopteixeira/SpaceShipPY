@@ -5,8 +5,8 @@ from CoreGame import Settings
 
 print("Game: ",Settings.NAVIMG)
 
-WIDTH = 500  # Largura
-HEIGHT = 500  # ALTURA
+WIDTH = Settings.WITDH  # Largura
+HEIGHT = Settings.HEIGHT  # ALTURA
 FPS = 60
 
 # define colors
@@ -15,19 +15,6 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
-
-
-back = ['1.gif','2.gif','3.gif','4.gif','5.gif','6.gif','7.gif','8.gif','9.gif','10.gif','11.gif','12.gif','13.gif','14.gif','15.gif'
-    , '16.gif','17.gif','18.gif','19.gif','20.gif','21.gif','22.gif','23.gif','24.gif','25.gif','26.gif','27.gif','28.gif','29.gif','0.gif']
-
-img_dir = ((__file__), "space5.jpg")
-
-meteors = []
-meteor_list =['meteorBrown_big1.png','meteorBrown_med1.png',
-              'meteorBrown_med1.png','meteorBrown_med3.png',
-              'meteorBrown_small1.png','meteorBrown_small2.png',
-              'meteorBrown_tiny1.png']
-
 
 # Inicializa o PYGAME e cria a Janela
 
@@ -38,33 +25,60 @@ pygame.display.set_caption("SpaceShip Dário")
 clock = pygame.time.Clock()
 
 
-spawnini = [WIDTH - WIDTH - 5,WIDTH-25]
+#Instaciar e carregar imagens pro SPRITE
 
+Background2 = ['1.gif','2.gif','3.gif','4.gif','5.gif','6.gif','7.gif','8.gif','9.gif','10.gif','11.gif','12.gif','13.gif','14.gif','15.gif'
+    , '16.gif','17.gif','18.gif','19.gif','20.gif','21.gif','22.gif','23.gif','24.gif','25.gif','26.gif','27.gif','28.gif','29.gif','0.gif']
 
+Background1 = pygame.image.load(("space5.jpg"))
 
-background = pygame.image.load(back[0]).convert()
-background_rect = background.get_rect()
+img_dir = ((__file__), "space5.jpg")
 
-
-
-player_img = pygame.image.load(Settings.NAVIMG).convert()
-
+meteors = []
+meteor_list1 =['meteorBrown_big1.png','meteorBrown_med1.png',
+              'meteorBrown_med1.png','meteorBrown_med3.png',
+              'meteorBrown_small1.png','meteorBrown_small2.png',
+              'meteorBrown_tiny1.png']
 
 img_dir = ((__file__), "RD1.png")
 inimigo_img = pygame.image.load(("RD1.png")).convert()
 
-for img in meteor_list:
+img_dir = ((__file__), "Laser.png")
+tiroIni_img = pygame.image.load(("Laser.png")).convert()
+
+img_dir = ((__file__), "laser2.png")
+tiro_img = pygame.image.load(("laser2.png")).convert()
+
+mob_img = pygame.image.load((meteor_list1[random.randrange(0,5)])).convert()
+
+
+
+if Settings.bgcurrente == 1:
+    background = pygame.image.load(("space5.jpg"))
+
+if Settings.bgcurrente == 2:
+    background = pygame.image.load(("space4.jpg"))
+
+
+
+
+
+background_rect = background.get_rect()
+
+
+#carregar pro Player
+player_img = pygame.image.load(Settings.NAVIMG).convert()
+
+
+
+spawnini = Settings.INILOCAL
+
+for img in meteor_list1:
     meteors.append(pygame.image.load((img)).convert())
 
 
 
 
-#Instaciar e carregar imagens pro SPRITE
-img_dir = ((__file__), "Laser.png")
-tiro_img = pygame.image.load(("Laser.png")).convert()
-
-img_dir = ((__file__), "Laser.png")
-tiroIni_img = pygame.image.load(("Laser.png")).convert()
 
 
 class Laser(pygame.sprite.Sprite):
@@ -85,11 +99,7 @@ class Laser(pygame.sprite.Sprite):
         if not keystate[pygame.K_m]:
             self.kill()
 
-#Instaciar e carregar imagens pro SPRITE
-img_dir = ((__file__), "laser2.png")
-tiro_img = pygame.image.load(("laser2.png")).convert()
 
-mob_img = pygame.image.load((meteor_list[random.randrange(0,5)])).convert()
 
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y,d):
@@ -315,7 +325,7 @@ for i in range(8):
 # Game loop
 i=0
 pup = 3
-contador = 3
+contador = Settings.vidas
 bs = 0
 cooldown = 0
 running = True
@@ -344,9 +354,6 @@ while running:
     all_sprites.update()
 
 
-
-
-    background = pygame.image.load(back[bs]).convert()
     if bs == 29:
         bs=0
     else:
@@ -356,7 +363,7 @@ while running:
     hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
     if i % 120 == 0:
         for j in range(15):
-            mob_img = pygame.image.load((meteor_list[random.randrange(0, 5)])).convert()
+            mob_img = pygame.image.load((meteor_list1[random.randrange(0, 5)])).convert()
             m = Mob()
             all_sprites.add(m)
             mobs.add(m)
@@ -397,11 +404,6 @@ while running:
 
 
 
-
-
-
-
-
     if i % 300 == 0:
         for j in range(3):
 
@@ -409,12 +411,6 @@ while running:
 
             all_sprites.add(m)
             mobs.add(m)
-
-
-
-
-
-    # check to see if a mob hit the player
 
 
     # Draw / render
