@@ -1,3 +1,5 @@
+from _ast import Set
+
 import pygame
 import random
 
@@ -51,13 +53,8 @@ tiro_img = pygame.image.load(("laser2.png")).convert()
 
 mob_img = pygame.image.load((meteor_list1[random.randrange(0,5)])).convert()
 
+background = pygame.image.load(Settings.backimg[Settings.bgcurrente])
 
-
-if Settings.bgcurrente == 1:
-    background = pygame.image.load(("space5.jpg"))
-
-if Settings.bgcurrente == 2:
-    background = pygame.image.load(("space4.jpg"))
 
 
 

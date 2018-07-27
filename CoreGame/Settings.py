@@ -11,7 +11,9 @@ HEIGHT = 500
 
 INILOCAL = [WITDH - WITDH - 5,WITDH-25]     #Onde Spawna os Inimigos
 
-vidas = 9999               #Vida do player
+vidas = 9999 #Vida do player
 
-bgcurrente = 2             #Mapa do Background
+backimg = ["space5.jpg","space4.jpg"]
+
+bgcurrente = 1             #Mapa do Background
 
