@@ -5,7 +5,7 @@ import random
 
 from CoreGame import Settings
 
-print("Game: ",Settings.NAVIMG)
+
 
 WIDTH = Settings.WITDH  # Largura
 HEIGHT = Settings.HEIGHT  # ALTURA
