@@ -5,11 +5,11 @@ import random
 
 from CoreGame import Settings
 
-
-
-WIDTH = Settings.WITDH  # Largura
+WIDTH = Settings.WITDH    # Largura
 HEIGHT = Settings.HEIGHT  # ALTURA
 FPS = 60
+
+
 
 # define colors
 WHITE = (255, 255, 255)
@@ -29,12 +29,9 @@ clock = pygame.time.Clock()
 
 #Instaciar e carregar imagens pro SPRITE
 
-Background2 = ['1.gif','2.gif','3.gif','4.gif','5.gif','6.gif','7.gif','8.gif','9.gif','10.gif','11.gif','12.gif','13.gif','14.gif','15.gif'
-    , '16.gif','17.gif','18.gif','19.gif','20.gif','21.gif','22.gif','23.gif','24.gif','25.gif','26.gif','27.gif','28.gif','29.gif','0.gif']
 
-Background1 = pygame.image.load(("space5.jpg"))
 
-img_dir = ((__file__), "space5.jpg")
+
 
 meteors = []
 meteor_list1 =['meteorBrown_big1.png','meteorBrown_med1.png',
@@ -42,8 +39,9 @@ meteor_list1 =['meteorBrown_big1.png','meteorBrown_med1.png',
               'meteorBrown_small1.png','meteorBrown_small2.png',
               'meteorBrown_tiny1.png']
 
-img_dir = ((__file__), "RD1.png")
-inimigo_img = pygame.image.load(("RD1.png")).convert()
+
+
+inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel])).convert()
 
 img_dir = ((__file__), "Laser.png")
 tiroIni_img = pygame.image.load(("Laser.png")).convert()
@@ -53,12 +51,16 @@ tiro_img = pygame.image.load(("laser2.png")).convert()
 
 mob_img = pygame.image.load((meteor_list1[random.randrange(0,5)])).convert()
 
-background = pygame.image.load(Settings.backimg[Settings.bgcurrente])
+background = pygame.image.load(Settings.backimg[Settings.currentlevel])
 
 
 
-
-
+shoot_sound = pygame.mixer.Sound('lasersound.wav')
+expl_sounds = []
+for snd in ['expl3.wav', 'expl6.wav']:
+    expl_sounds.append(pygame.mixer.Sound(snd))
+pygame.mixer.music.load(Settings.ostlist[Settings.currentlevel])
+pygame.mixer.music.set_volume(0.4)
 
 background_rect = background.get_rect()
 
@@ -192,6 +194,8 @@ class Player(pygame.sprite.Sprite):
             bullet = Bullet(self.rect.centerx, self.rect.top, 0)
             all_sprites.add(bullet)
             bullets.add(bullet)
+            shoot_sound.play()
+
         elif powerup == 2:
             bullet = Bullet(self.rect.centerx - 10, self.rect.top, 0)
             all_sprites.add(bullet)
@@ -199,6 +203,8 @@ class Player(pygame.sprite.Sprite):
             bullet1 = Bullet(self.rect.centerx + 10, self.rect.top, 0)
             all_sprites.add(bullet1)
             bullets.add(bullet1)
+            shoot_sound.play()
+
         elif powerup == 3:
             bullet = Bullet(self.rect.centerx - 20, self.rect.top, 1)
             all_sprites.add(bullet)
@@ -209,6 +215,7 @@ class Player(pygame.sprite.Sprite):
             bullet3 = Bullet(self.rect.centerx + 20, self.rect.top, 2)
             all_sprites.add(bullet3)
             bullets.add(bullet3)
+            shoot_sound.play()
 
 
 
@@ -227,6 +234,7 @@ class Mob(pygame.sprite.Sprite):
         self.image = pygame.Surface((30, 40))
         self.image = mob_img
         self.rect = self.image.get_rect()
+        self.radius = int(self.rect.width * .85 / 2)
         self.image.set_colorkey(BLACK)
         self.rect.x = random.randrange(WIDTH - self.rect.width)
         self.rect.y = random.randrange(-100, -40)
@@ -260,6 +268,7 @@ class Inimigos(pygame.sprite.Sprite):
         self.image = inimigo_img
         self.image = pygame.transform.scale(inimigo_img, (50, 50))
         self.rect = self.image.get_rect()
+        self.radius = int(self.rect.width * .20 / 2)
         self.image.set_colorkey(BLACK)
         r = random.randrange(0,2)
         self.rect.x = spawnini[r]
@@ -297,6 +306,16 @@ class Inimigos(pygame.sprite.Sprite):
         bulletsIni.add(bullet4)
 
 
+font_name = pygame.font.match_font('Chandas')
+def draw_text(surf, text, size, x, y):
+    font = pygame.font.Font(font_name, size)
+    text_surface = font.render(text, True, WHITE)
+    text_rect = text_surface.get_rect()
+    text_rect.midtop = (x, y)
+    surf.blit(text_surface, text_rect)
+
+
+
 
 
 mobs = pygame.sprite.Group()
@@ -318,6 +337,8 @@ for i in range(8):
 
 
 
+pontos = 0
+pygame.mixer.music.play(loops=-1)
 
 # Game loop
 i=0
@@ -358,12 +379,14 @@ while running:
 
     # check to see if a bullet hit a mob
     hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
-    if i % 120 == 0:
-        for j in range(15):
-            mob_img = pygame.image.load((meteor_list1[random.randrange(0, 5)])).convert()
-            m = Mob()
-            all_sprites.add(m)
-            mobs.add(m)
+    for hit in hits:
+        pontos += 100 - hit.radius
+        random.choice(expl_sounds).play()
+
+        mob_img = pygame.image.load((meteor_list1[random.randrange(0, 5)])).convert()
+        m = Mob()
+        all_sprites.add(m)
+        mobs.add(m)
 
 
     hits = pygame.sprite.spritecollide(player, bulletsIni, True)
@@ -414,6 +437,8 @@ while running:
     screen.fill(BLACK)
     screen.blit(background, background_rect)
     all_sprites.draw(screen)
+
+    draw_text(screen, str(pontos), 20, WIDTH / 2, 10)
     # *after* drawing everything, flip the display
     pygame.display.flip()
 
