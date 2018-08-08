@@ -11,7 +11,7 @@ FPS = 60
 
 
 
-# define colors
+# define cores
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -28,9 +28,6 @@ clock = pygame.time.Clock()
 
 
 #Instaciar e carregar imagens pro SPRITE
-
-
-
 
 
 meteors = []
@@ -60,7 +57,7 @@ expl_sounds = []
 for snd in ['expl3.wav', 'expl6.wav']:
     expl_sounds.append(pygame.mixer.Sound(snd))
 pygame.mixer.music.load(Settings.ostlist[Settings.currentlevel])
-pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.set_volume(0.5)
 
 background_rect = background.get_rect()
 
@@ -76,8 +73,29 @@ for img in meteor_list1:
     meteors.append(pygame.image.load((img)).convert())
 
 
+#Explosoes
 
+explosion_anim = {}
+explosion_anim['grande'] = []
+explosion_anim['pequena'] = []
+explosion_anim['player'] = []
 
+for i in range(9):
+    expi = 'regularExplosion0{}.png'.format(i)
+    img = pygame.image.load(expi).convert()
+    img.set_colorkey(BLACK)
+    img_lg = pygame.transform.scale(img, (75, 75))
+    explosion_anim['grande'].append(img_lg)
+    img_sm = pygame.transform.scale(img, (32, 32))
+    explosion_anim['pequena'].append(img_sm)
+    filename = 'sonicExplosion0{}.png'.format(i)
+    img = pygame.image.load(filename).convert()
+    img.set_colorkey(BLACK)
+    explosion_anim['player'].append(img)
+
+powerup_images = {}
+powerup_images['shield'] = pygame.image.load('shield_gold.png').convert()
+powerup_images['gun'] = pygame.image.load('bolt_gold.png').convert()
 
 
 class Laser(pygame.sprite.Sprite):
@@ -305,6 +323,47 @@ class Inimigos(pygame.sprite.Sprite):
         all_sprites.add(bullet4)
         bulletsIni.add(bullet4)
 
+class Pow(pygame.sprite.Sprite):
+    def __init__(self, center):
+        pygame.sprite.Sprite.__init__(self)
+        self.type = random.choice(['shield','gun'])
+        self.image = powerup_images[self.type]
+        self.image.set_colorkey(BLACK)
+        self.rect = self.image.get_rect()
+        self.rect.center = center
+        self.speedy = 2
+
+    def update(self):
+        self.rect.y += self.speedy
+        # kill if it moves off the bottom of the screen
+        if self.rect.top > HEIGHT:
+            self.kill()
+
+class Explosion(pygame.sprite.Sprite):
+    def __init__(self, center, size):
+        pygame.sprite.Sprite.__init__(self)
+        self.size = size
+        self.image = explosion_anim[self.size][0]
+        self.rect = self.image.get_rect()
+        self.rect.center = center
+        self.frame = 0
+        self.last_update = pygame.time.get_ticks()
+        self.frame_rate = 50
+
+    def update(self):
+        now = pygame.time.get_ticks()
+        if now - self.last_update > self.frame_rate:
+            self.last_update = now
+            self.frame += 1
+            if self.frame == len(explosion_anim[self.size]):
+                self.kill()
+            else:
+                center = self.rect.center
+                self.image = explosion_anim[self.size][self.frame]
+                self.rect = self.image.get_rect()
+                self.rect.center = center
+
+
 
 font_name = pygame.font.match_font('Chandas')
 def draw_text(surf, text, size, x, y):
@@ -315,15 +374,31 @@ def draw_text(surf, text, size, x, y):
     surf.blit(text_surface, text_rect)
 
 
+def draw_shield_bar(surf, x, y, pct):
+    if pct < 0:
+        pct = 0
+    BAR_LENGTH = 100
+    BAR_HEIGHT = 10
+    fill = (pct / Settings.vidas) * BAR_LENGTH
+    outline_rect = pygame.Rect(x, y, BAR_LENGTH, BAR_HEIGHT)
+    fill_rect = pygame.Rect(x, y, fill, BAR_HEIGHT)
+    pygame.draw.rect(surf, GREEN, fill_rect)
+    pygame.draw.rect(surf, WHITE, outline_rect, 2)
 
-
+def newmob():
+    m = Mob()
+    all_sprites.add(m)
+    mobs.add(m)
 
 mobs = pygame.sprite.Group()
 
 player = Player()
+
+
 all_sprites = pygame.sprite.Group()
 bullets = pygame.sprite.Group()
 bulletsIni = pygame.sprite.Group()
+powerups = pygame.sprite.Group()
 lasers = pygame.sprite.Group()
 all_sprites.add(player)
 
@@ -331,9 +406,7 @@ all_sprites.add(player)
 
 
 for i in range(8):
-    m = Mob()
-    all_sprites.add(m)
-    mobs.add(m)
+    newmob()
 
 
 
@@ -341,15 +414,17 @@ pontos = 0
 pygame.mixer.music.play(loops=-1)
 
 # Game loop
+game_over = True
 i=0
-pup = 3
+pup = 1
 contador = Settings.vidas
 bs = 0
 cooldown = 0
 running = True
 while running:
     i+=1
-
+    #if game_over:
+        #show_go_screen()
     # keep loop running at the right speed
     clock.tick(FPS)
     # Process input (events)
@@ -367,6 +442,11 @@ while running:
                 mobs.add(lasers)
 
 
+    if i % 300 == 0:
+        for j in range(3):
+
+            newmob()
+
 
     # Update
     all_sprites.update()
@@ -382,11 +462,13 @@ while running:
     for hit in hits:
         pontos += 100 - hit.radius
         random.choice(expl_sounds).play()
-
         mob_img = pygame.image.load((meteor_list1[random.randrange(0, 5)])).convert()
-        m = Mob()
-        all_sprites.add(m)
-        mobs.add(m)
+        expl = Explosion(hit.rect.center, 'grande')
+        all_sprites.add(expl)
+        if random.random() > 0.9:
+            pow = Pow(hit.rect.center)
+            all_sprites.add(pow)
+            powerups.add(pow)
 
 
     hits = pygame.sprite.spritecollide(player, bulletsIni, True)
@@ -395,8 +477,8 @@ while running:
 
     if hits:
         if cooldown == 0:
-            if pup > 1:
-                pup-=1
+            expl = Explosion(player.rect.center,'pequena')
+            all_sprites.add(expl)
             print(contador)
             if contador == 0:
                 running = False
@@ -407,30 +489,31 @@ while running:
     hits = pygame.sprite.spritecollide(player, mobs, True)
     if hits:
         if cooldown == 0:
-            if pup > 1:
-                pup -= 1
+            expl = Explosion(player.rect.center,'pequena')
+            all_sprites.add(expl)
             print(contador)
             if contador == 0:
+                death_explosion = Explosion(player.rect.center, 'player')
+                all_sprites.add(death_explosion)
+                player.kill()
+
+            # if the player died and the explosion has finished playing
+            if contador == 0 and not death_explosion.alive():
                 running = False
             contador -= 1
-            cooldown = 120
+            cooldown = 60
 
     hits = pygame.sprite.groupcollide(mobs, lasers, True, False)
-    #if i % 1800 == 0:
-     ##      mob_img = pygame.image.load((meteor_list[random.randrange(0, 5)])).convert()
-       #     m = Mob()
-        #    all_sprites.add(m)
 
 
+    hits = pygame.sprite.spritecollide(player, powerups, True)
+    if hits:
+        if pup < 3:
+            pup =+ 1
+        if pup >= 3:
+            pup = 3
 
 
-    if i % 300 == 0:
-        for j in range(3):
-
-            m = Inimigos()
-
-            all_sprites.add(m)
-            mobs.add(m)
 
 
     # Draw / render
@@ -439,6 +522,7 @@ while running:
     all_sprites.draw(screen)
 
     draw_text(screen, str(pontos), 20, WIDTH / 2, 10)
+    draw_shield_bar(screen, 5, 5, contador)
     # *after* drawing everything, flip the display
     pygame.display.flip()
 
