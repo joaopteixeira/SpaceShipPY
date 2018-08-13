@@ -39,6 +39,8 @@ meteor_list1 =['meteorBrown_big1.png','meteorBrown_med1.png',
 
 
 inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel])).convert()
+boss_img = pygame.image.load((Settings.bosslist[Settings.currentlevel])).convert()
+
 
 img_dir = ((__file__), "Laser.png")
 tiroIni_img = pygame.image.load(("Laser.png")).convert()
@@ -223,7 +225,7 @@ class Player(pygame.sprite.Sprite):
             bullets.add(bullet1)
             shoot_sound.play()
 
-        elif powerup == 3:
+        elif powerup >= 3:
             bullet = Bullet(self.rect.centerx - 20, self.rect.top, 1)
             all_sprites.add(bullet)
             bullets.add(bullet)
@@ -314,7 +316,7 @@ class Inimigos(pygame.sprite.Sprite):
 
         self.i +=1
 
-        if self.i % 10 == 0:
+        if self.i % Settings.frequencia_tiros_inimigos[Settings.currentlevel] == 0:
             for j in range(20):
                 self.shoot()
 
@@ -323,10 +325,78 @@ class Inimigos(pygame.sprite.Sprite):
         all_sprites.add(bullet4)
         bulletsIni.add(bullet4)
 
-class Pow(pygame.sprite.Sprite):
+
+
+class Boss(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((150, 150))
+        self.image = boss_img
+        self.image = pygame.transform.scale(boss_img, (150, 150))
+        self.rect = self.image.get_rect()
+        self.radius = int(self.rect.width * .20 / 2)
+        self.image.set_colorkey(BLACK)
+        r = random.randrange(0,2)
+        self.rect.x = 1
+        self.rect.y = 2
+        self.speedy = 0.5
+        if r == 1:
+            self.speedx = 1
+        else:
+            self.speedx = -1
+
+
+        self.i = 0
+
+
+    def update(self):
+        self.rect.x += self.speedx
+        self.rect.y += self.speedy
+        if self.rect.top > HEIGHT + 30 or self.rect.left < -45 or self.rect.right > WIDTH + 40:
+            self.speedx *= -1
+        elif self.rect.left < 0:
+            self.speedx *= -1
+
+
+
+
+        self.i +=1
+
+        if self.i % Settings.frequencia_tiros_inimigos[Settings.currentlevel] == 0:
+            for j in range(20):
+                self.shoot()
+
+    def shoot(self):
+        bullet4 = BulletIni(self.rect.centerx, self.rect.bottom , 0)
+        all_sprites.add(bullet4)
+        bulletsIni.add(bullet4)
+        bullet4 = BulletIni(self.rect.centerx - 20, self.rect.bottom, -1)
+        all_sprites.add(bullet4)
+        bulletsIni.add(bullet4)
+        bullet4 = BulletIni(self.rect.centerx, self.rect.bottom, 0)
+        all_sprites.add(bullet4)
+        bulletsIni.add(bullet4)
+        bullet4 = BulletIni(self.rect.centerx + 20, self.rect.bottom, -2)
+        all_sprites.add(bullet4)
+        bulletsIni.add(bullet4)
+        bullet4 = BulletIni(self.rect.centerx + 40, self.rect.bottom, -4)
+        all_sprites.add(bullet4)
+        bulletsIni.add(bullet4)
+        bullet4 = BulletIni(self.rect.centerx + 60, self.rect.bottom, -8)
+        all_sprites.add(bullet4)
+        bulletsIni.add(bullet4)
+        bullet4 = BulletIni(self.rect.centerx + 80, self.rect.bottom, -10)
+        all_sprites.add(bullet4)
+        bulletsIni.add(bullet4)
+        bullet4 = BulletIni(self.rect.centerx + 100, self.rect.bottom, -12)
+        all_sprites.add(bullet4)
+        bulletsIni.add(bullet4)
+       # shootboss_sound.play()
+
+class PoweShield(pygame.sprite.Sprite):
     def __init__(self, center):
         pygame.sprite.Sprite.__init__(self)
-        self.type = random.choice(['shield','gun'])
+        self.type = ('shield')
         self.image = powerup_images[self.type]
         self.image.set_colorkey(BLACK)
         self.rect = self.image.get_rect()
@@ -338,6 +408,22 @@ class Pow(pygame.sprite.Sprite):
         # kill if it moves off the bottom of the screen
         if self.rect.top > HEIGHT:
             self.kill()
+
+class Pow(pygame.sprite.Sprite):
+    def __init__(self, center):
+        pygame.sprite.Sprite.__init__(self)
+        self.type = ('gun')
+        self.image = powerup_images[self.type]
+        self.image.set_colorkey(BLACK)
+        self.rect = self.image.get_rect()
+        self.rect.center = center
+        self.speedy = 2
+
+    def update(self):
+        self.rect.y += self.speedy
+        # kill if it moves off the bottom of the screen
+        if self.rect.top > HEIGHT:
+           self.kill()
 
 class Explosion(pygame.sprite.Sprite):
     def __init__(self, center, size):
@@ -389,9 +475,24 @@ def newmob():
     m = Mob()
     all_sprites.add(m)
     mobs.add(m)
+def newinim():
+    ini = Inimigos()
+    all_sprites.add(ini)
+    inimigos.add(ini)
+
+def newboss():
+    bos = Boss()
+    all_sprites.add(bos)
+    bosses.add(bos)
+
+
+
+
+
 
 mobs = pygame.sprite.Group()
-
+inimigos = pygame.sprite.Group()
+bosses = pygame.sprite.Group()
 player = Player()
 
 
@@ -401,12 +502,9 @@ bulletsIni = pygame.sprite.Group()
 powerups = pygame.sprite.Group()
 lasers = pygame.sprite.Group()
 all_sprites.add(player)
+shieldpowerups = pygame.sprite.Group()
 
 
-
-
-for i in range(8):
-    newmob()
 
 
 
@@ -441,11 +539,29 @@ while running:
             if event.key == pygame.K_m:
                 mobs.add(lasers)
 
+#PROGRESSAO DE INIMIGOS E NO FIM ENDBOSS
 
     if i % 300 == 0:
-        for j in range(3):
+        for j in range(1):
 
-            newmob()
+            newboss()
+
+    if i % 600 == 0:
+        for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
+
+            newinim()
+
+    if i % 800 == 0:
+        for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
+            newinim()
+
+    if i % 1200 == 0:
+        for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
+            newinim()
+
+    if i % 1600 == 0:
+        for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
+            newinim()
 
 
     # Update
@@ -465,10 +581,10 @@ while running:
         mob_img = pygame.image.load((meteor_list1[random.randrange(0, 5)])).convert()
         expl = Explosion(hit.rect.center, 'grande')
         all_sprites.add(expl)
-        if random.random() > 0.9:
-            pow = Pow(hit.rect.center)
-            all_sprites.add(pow)
-            powerups.add(pow)
+        if random.randint(1, 30)  == Settings.prob_de_dropar_shield:  # Integer from 1 to 10
+            sh = PoweShield(hit.rect.center)
+            all_sprites.add(sh)
+            shieldpowerups.add(sh)
 
 
     hits = pygame.sprite.spritecollide(player, bulletsIni, True)
@@ -503,15 +619,30 @@ while running:
             contador -= 1
             cooldown = 60
 
+
+    hits = pygame.sprite.groupcollide(inimigos, bullets, True, True)
+    for hit in hits:
+        pontos += 500 - hit.radius
+        random.choice(expl_sounds).play()
+        expl = Explosion(hit.rect.center, 'grande')
+        all_sprites.add(expl)
+        if random.random() > 0.9:
+            pow = Pow(hit.rect.center)
+            all_sprites.add(pow)
+            powerups.add(pow)
+
+
     hits = pygame.sprite.groupcollide(mobs, lasers, True, False)
 
 
     hits = pygame.sprite.spritecollide(player, powerups, True)
     if hits:
-        if pup < 3:
-            pup =+ 1
-        if pup >= 3:
-            pup = 3
+        pup +=1
+
+    hits = pygame.sprite.spritecollide(player, shieldpowerups, True)
+    if hits:
+        contador +=1
+
 
 
 
@@ -526,4 +657,4 @@ while running:
     # *after* drawing everything, flip the display
     pygame.display.flip()
 
-pygame.quit()
+pygame.quit() 
