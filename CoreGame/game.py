@@ -517,6 +517,7 @@ i=0
 pup = 1
 contador = Settings.vidas
 bs = 0
+lifeboss = 0
 cooldown = 0
 running = True
 while running:
@@ -541,7 +542,7 @@ while running:
 
 #PROGRESSAO DE INIMIGOS E NO FIM ENDBOSS
 
-    if i % 300 == 0:
+    if i == 300:
         for j in range(1):
 
             newboss()
@@ -572,6 +573,8 @@ while running:
         bs=0
     else:
         bs+=1
+
+
 
     # check to see if a bullet hit a mob
     hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
@@ -630,6 +633,17 @@ while running:
             pow = Pow(hit.rect.center)
             all_sprites.add(pow)
             powerups.add(pow)
+
+    hits = pygame.sprite.groupcollide(bosses, bullets, False, True)
+    for hit in hits:
+        pontos += 10
+        lifeboss += 1
+        print(lifeboss)
+        if lifeboss == 10:
+
+          random.choice(expl_sounds).play()
+          expl = Explosion(hit.rect.center, 'grande')
+          all_sprites.add(expl)
 
 
     hits = pygame.sprite.groupcollide(mobs, lasers, True, False)
