@@ -639,11 +639,25 @@ while running:
         pontos += 10
         lifeboss += 1
         print(lifeboss)
-        if lifeboss == 10:
+        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.30 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.35:
+            random.choice(expl_sounds).play()
+            expl = Explosion(hit.rect.center, 'pequena')
+            all_sprites.add(expl)
 
-          random.choice(expl_sounds).play()
-          expl = Explosion(hit.rect.center, 'grande')
-          all_sprites.add(expl)
+
+        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.75 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80:
+
+            random.choice(expl_sounds).play()
+            expl = Explosion(hit.rect.center, 'grande')
+            all_sprites.add(expl)
+
+        if lifeboss == Settings.total_vida_boss[Settings.currentlevel]:
+
+            death_explosion = Explosion(hit.rect.center, 'player')
+            all_sprites.add(death_explosion)
+            random.choice(expl_sounds).play()
+            all_sprites.add(death_explosion)
+            all_sprites.remove(bosses)
 
 
     hits = pygame.sprite.groupcollide(mobs, lasers, True, False)
