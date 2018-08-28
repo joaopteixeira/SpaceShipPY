@@ -545,7 +545,7 @@ while running:
     if i == 300:
         for j in range(1):
 
-            newboss()
+            newinim()
 
     if i % 600 == 0:
         for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
@@ -645,7 +645,7 @@ while running:
             all_sprites.add(expl)
 
 
-        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.75 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80:
+        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.75 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80 :
 
             random.choice(expl_sounds).play()
             expl = Explosion(hit.rect.center, 'grande')
