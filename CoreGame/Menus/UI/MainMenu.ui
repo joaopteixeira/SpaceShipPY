@@ -30,10 +30,10 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>270</y>
-      <width>411</width>
-      <height>221</height>
+      <x>360</x>
+      <y>70</y>
+      <width>761</width>
+      <height>651</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -45,65 +45,298 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPushButton" name="bt_unlock">
+    <widget class="QPushButton" name="bt_left">
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>90</y>
-       <width>411</width>
+       <y>230</y>
+       <width>131</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>48</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>&lt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_rigth">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>230</y>
+       <width>131</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>48</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_unlock">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>310</y>
+       <width>501</width>
        <height>41</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semilight</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>Unlocked</string>
+      <string>Desbloquear</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>230</y>
+       <width>761</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semilight</family>
+       <pointsize>40</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
+     <property name="text">
+      <string>Bloqueado</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <zorder>label_8</zorder>
+    <zorder>bt_left</zorder>
+    <zorder>bt_rigth</zorder>
+    <zorder>bt_unlock</zorder>
    </widget>
-   <widget class="QPushButton" name="bt_left">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>270</y>
-      <width>75</width>
-      <height>221</height>
+      <x>1000</x>
+      <y>30</y>
+      <width>121</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>48</pointsize>
+      <family>Yu Gothic UI Semilight</family>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color:transparent;</string>
     </property>
     <property name="text">
-     <string>&lt;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>720</x>
-      <y>10</y>
-      <width>47</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
      <string>1000</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
-   <widget class="QPushButton" name="bt_play">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>530</y>
-      <width>411</width>
-      <height>61</height>
+      <x>1000</x>
+      <y>0</y>
+      <width>121</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:transparent;</string>
+    </property>
+    <property name="text">
+     <string>Coins</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QWidget" name="barra" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>361</width>
+      <height>811</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>60</y>
+       <width>351</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semilight</family>
+       <pointsize>40</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
+     <property name="text">
+      <string>SpaceShipPy</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>640</y>
+       <width>351</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semilight</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
+     <property name="text">
+      <string>Ultima Pontuação</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>420</y>
+       <width>331</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semilight</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
+     <property name="text">
+      <string>Pontuação Maxima</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>490</y>
+       <width>331</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semilight</family>
+       <pointsize>29</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
+     <property name="text">
+      <string>1000</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>710</y>
+       <width>331</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semilight</family>
+       <pointsize>29</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
+     <property name="text">
+      <string>1450</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="bt_play">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>720</y>
+      <width>331</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semilight</family>
       <pointsize>24</pointsize>
      </font>
     </property>
@@ -112,74 +345,6 @@
     </property>
     <property name="text">
      <string>Play</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="bt_rigth">
-    <property name="geometry">
-     <rect>
-      <x>1030</x>
-      <y>270</y>
-      <width>75</width>
-      <height>221</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>48</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:transparent;</string>
-    </property>
-    <property name="text">
-     <string>&gt;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="bt_play_2">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>200</y>
-      <width>411</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>24</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:white;</string>
-    </property>
-    <property name="text">
-     <string>Back</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>650</x>
-      <y>10</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Coins</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="barra" native="true">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>0</y>
-      <width>281</width>
-      <height>811</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:#101723;</string>
     </property>
    </widget>
   </widget>

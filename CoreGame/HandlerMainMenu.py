@@ -14,6 +14,15 @@ class MyFirstGuiProgram(Ui_Dialog):
 
         self.i = 0
         self.frame.setStyleSheet("background-image:url("+Settings.navlist[self.i]+");background-repeat:no-repeat;background-position: center;")
+        self.barra.setStyleSheet("background-image:url('azul.jpg')")
+        self.bt_unlock.setStyleSheet("background-image:url('azul.jpg');color:white;")
+        self.label_8.setStyleSheet("background-image:url('azul.jpg');color:white;")
+
+        self.bt_play.setStyleSheet("background-image:url('images.png')")
+        self.bt_rigth.setStyleSheet("background-image:url('images.png')")
+        self.bt_left.setStyleSheet("background-image:url('images.png')")
+        self.widget.setStyleSheet("background-color:white")
+        self.label_2.setStyleSheet("background-color:transparent")
 
         self.bt_rigth.clicked.connect(self.choose)
         self.bt_left.clicked.connect(self.choose)
@@ -33,6 +42,7 @@ class MyFirstGuiProgram(Ui_Dialog):
         if int(self.label_3.text()) >= 300:
             Settings.NAVUNLOCKED.append(self.i)
             self.bt_unlock.setVisible(False)
+            self.label_8.setVisible(False)
             self.label_3.setText(str(int(self.label_3.text())-300))
 
 
@@ -53,9 +63,11 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.frame.setStyleSheet("background-image:url(" + Settings.navlist[
             self.i] + ");background-repeat:no-repeat;background-position: center;")
         self.bt_unlock.setVisible(True)
+        self.label_8.setVisible(True)
         for u in Settings.NAVUNLOCKED:
             if u == self.i:
                 self.bt_unlock.setVisible(False)
+                self.label_8.setVisible(False)
 
         Settings.NAVIMG = str(Settings.navlist[self.i])
         print(Settings.NAVIMG)
