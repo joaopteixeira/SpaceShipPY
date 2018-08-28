@@ -17,7 +17,7 @@ INILOCAL = [WITDH - WITDH - 5,WITDH-25]     #Onde Spawna os Inimigos
 vidas = 100 #Vida do player
 
 
-currentlevel = 0           #qual o nivel selecionado
+currentlevel = 3           #qual o nivel selecionado
 
 
 backimg = ["space1.jpg", "space2.jpg", "space3.jpg", "space4.jpg"]      #Imagem do background
