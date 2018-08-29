@@ -166,7 +166,9 @@ class BulletIni(pygame.sprite.Sprite):
             self.rect.x -= self.speedy +7
 
         # kill if it moves off the top of the screen
-        if self.rect.bottom < 0:
+        print(self.rect.y)
+        if self.rect.y > 715:
+            print("kill")
             self.kill()
 
 class Player(pygame.sprite.Sprite):
@@ -302,7 +304,6 @@ class Inimigos(pygame.sprite.Sprite):
 
         self.i = 0
 
-
     def update(self):
         self.rect.x += self.speedx
         self.rect.y += self.speedy
@@ -316,9 +317,9 @@ class Inimigos(pygame.sprite.Sprite):
 
         self.i +=1
 
+
         if self.i % Settings.frequencia_tiros_inimigos[Settings.currentlevel] == 0:
-            for j in range(20):
-                self.shoot()
+            self.shoot()
 
     def shoot(self):
         bullet4 = BulletIni(self.rect.centerx, self.rect.bottom , 0)
@@ -526,6 +527,10 @@ while running:
         #show_go_screen()
     # keep loop running at the right speed
     clock.tick(FPS)
+    if len(bulletsIni) > 1000:
+        FPS += 10
+    else:
+        FPS = 60
     # Process input (events)
     for event in pygame.event.get():
         # check for closing window

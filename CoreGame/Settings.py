@@ -11,6 +11,9 @@ HEIGHT = 600
 
 INILOCAL = [WITDH - WITDH - 5,WITDH-25]     #Onde Spawna os Inimigos
 
+COINS = 1000
+
+NAVSELECTED = 0
 
 
 
