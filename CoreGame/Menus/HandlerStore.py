@@ -9,6 +9,7 @@ class StoreGui(Ui_Frame):
 
         self.setupUi(frame)
         self.frame = frame
+        self.frame.setStyleSheet("background-image:url(" + Settings.navlist[Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
 
         self.styleleft = """
 
@@ -51,8 +52,13 @@ class StoreGui(Ui_Frame):
                         """
         self.i = 0
         self.bt_unlock.setStyleSheet("QPushButton{background-image:url('lock.png');color:transparent;background-color:transparent;padding-top:120px;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+
         self.bt_right.setStyleSheet(self.styleright)
         self.bt_left.setStyleSheet(self.styleleft)
+        self.lb_velocity.setStyleSheet("QPushButton{background-image:url('velocity.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: left;margin: 1px;border-style: outset;}")
+        self.lb_disparo.setStyleSheet("QPushButton{background-image:url('shoot.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: left;margin: 1px;border-style: outset;}")
+        self.lb_preco.setStyleSheet("QPushButton{background-image:url('price.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: left;margin: 1px;border-style: outset;}")
+
         self.bt_unlock.clicked.connect(self.unlock)
         self.bt_right.clicked.connect(self.choose)
         self.bt_left.clicked.connect(self.choose)
@@ -74,7 +80,8 @@ class StoreGui(Ui_Frame):
         else:
             Settings.NAVSELECTED=0
         self.frame.setStyleSheet("background-image:url(" + Settings.navlist[
-            Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+            Settings.NAVSELECTED] + ") stretch stretch;background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+
         self.bt_unlock.setVisible(True)
         #self.label_8.setVisible(True)
         for u in Settings.NAVUNLOCKED:
