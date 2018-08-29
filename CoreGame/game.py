@@ -555,7 +555,7 @@ while running:
     if i % 600 == 0:
         for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
 
-            newinim()
+            newmob()
 
     if i % 800 == 0:
         for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
@@ -563,11 +563,11 @@ while running:
 
     if i % 1200 == 0:
         for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
-            newinim()
+            newmob()
 
     if i % 1600 == 0:
         for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
-            newinim()
+            newboss()
 
 
     # Update
