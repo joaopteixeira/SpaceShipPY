@@ -60,3 +60,5 @@ navlistMINI = ["player1-mini.png", "player2-mini.png", "player3.png"]
 
 
 prob_de_dropar_shield = 5
+
+########################################
