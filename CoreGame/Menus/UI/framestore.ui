@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1131</width>
+    <width>1143</width>
     <height>651</height>
    </rect>
   </property>
@@ -112,8 +112,8 @@
   <widget class="QPushButton" name="lb_disparo">
    <property name="geometry">
     <rect>
-     <x>840</x>
-     <y>100</y>
+     <x>860</x>
+     <y>320</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -146,8 +146,8 @@
   <widget class="QPushButton" name="lb_velocity">
    <property name="geometry">
     <rect>
-     <x>840</x>
-     <y>60</y>
+     <x>860</x>
+     <y>280</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -180,8 +180,42 @@
   <widget class="QPushButton" name="lb_preco">
    <property name="geometry">
     <rect>
-     <x>840</x>
-     <y>20</y>
+     <x>860</x>
+     <y>240</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI Semilight</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>400</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>26</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="default">
+    <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="lb_vida">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>360</y>
      <width>121</width>
      <height>41</height>
     </rect>

@@ -2,6 +2,9 @@ from PyQt5.uic.properties import QtCore, QtWidgets
 
 from CoreGame import Settings
 from CoreGame.Menus.FrameStore import Ui_Frame
+from CoreGame.Menus.service.ServNav import ServNav
+from PyQt5.QtGui import QMovie
+from PyQt5.QtCore import QByteArray,Qt
 
 class StoreGui(Ui_Frame):
     def __init__(self,frame):
@@ -10,7 +13,7 @@ class StoreGui(Ui_Frame):
         self.setupUi(frame)
         self.frame = frame
         self.frame.setStyleSheet("background-image:url(" + Settings.navlist[Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
-
+        self.navs = ServNav()
         self.styleleft = """
 
                                 QPushButton{
@@ -55,32 +58,47 @@ class StoreGui(Ui_Frame):
 
         self.bt_right.setStyleSheet(self.styleright)
         self.bt_left.setStyleSheet(self.styleleft)
-        self.lb_velocity.setStyleSheet("QPushButton{background-image:url('velocity.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: left;margin: 1px;border-style: outset;}")
-        self.lb_disparo.setStyleSheet("QPushButton{background-image:url('shoot.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: left;margin: 1px;border-style: outset;}")
-        self.lb_preco.setStyleSheet("QPushButton{background-image:url('price.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: left;margin: 1px;border-style: outset;}")
+        self.lb_velocity.setStyleSheet("QPushButton{background-image:url('velocity.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: right;margin: 1px;border-style: outset;}")
+        self.lb_disparo.setStyleSheet("QPushButton{background-image:url('shoot.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: right;margin: 1px;border-style: outset;}")
+        self.lb_preco.setStyleSheet("QPushButton{background-image:url('price.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: right;margin: 1px;border-style: outset;}")
+        self.lb_vida.setStyleSheet("QPushButton{background-image:url('life.png');padding-left:30px;color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: right;margin: 1px;border-style: outset;}")
+
+        self.lb_preco.setText(str(self.navs.getnavs()[0].getpreco()))
+        self.lb_velocity.setText(str(self.navs.getnavs()[0].getvelocidade()))
+        self.lb_disparo.setText(str(self.navs.getnavs()[0].getdisparo()))
+        self.lb_vida.setText(str(self.navs.getnavs()[0].getvida()))
 
         self.bt_unlock.clicked.connect(self.unlock)
-        self.bt_right.clicked.connect(self.choose)
-        self.bt_left.clicked.connect(self.choose)
+        self.bt_right.clicked.connect(self.chooseright)
+        self.bt_left.clicked.connect(self.chooseleft)
+
+        #GIF
+        #self.movie = QMovie("123.gif", QByteArray(), self.frame)
+        #self.movie.setCacheMode(QMovie.CacheAll)
+        #self.movie.setSpeed(100)
+        #self.label.setAlignment(Qt.AlignCenter)
+        #self.label.setMovie(self.movie)
+
+#        self.movie.start()
 
     def getframe(self):
         return self.frame
 
     def unlock(self):
         print("asd")
-        if int(Settings.COINS) >= 300:
+        if int(Settings.COINS) >= self.navs.getnavs()[Settings.NAVSELECTED].getpreco():
             Settings.NAVUNLOCKED.append(Settings.NAVSELECTED)
             self.bt_unlock.setVisible(False)
             #self.label_8.setVisible(False)
-            Settings.COINS -= 300
+            Settings.COINS -= self.navs.getnavs()[Settings.NAVSELECTED].getpreco()
 
-    def choose(self):
-        if Settings.NAVSELECTED < len(Settings.navlist)-1:
-            Settings.NAVSELECTED+=1
-        else:
-            Settings.NAVSELECTED=0
-        self.frame.setStyleSheet("background-image:url(" + Settings.navlist[
-            Settings.NAVSELECTED] + ") stretch stretch;background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+    def chooseleft(self):
+        if Settings.NAVSELECTED > 0:
+            Settings.NAVSELECTED-=1
+            self.lb_preco.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getpreco()))
+            self.lb_velocity.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvelocidade()))
+            self.lb_disparo.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getdisparo()))
+            self.lb_vida.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvida()))
 
         self.bt_unlock.setVisible(True)
         #self.label_8.setVisible(True)
@@ -90,3 +108,25 @@ class StoreGui(Ui_Frame):
                 #self.label_8.setVisible(False)
 
         Settings.NAVIMG = str(Settings.navlist[Settings.NAVSELECTED])
+        self.frame.setStyleSheet("background-image:url(" + Settings.navlist[
+            Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+
+    def chooseright(self):
+        if Settings.NAVSELECTED < len(Settings.navlist)-1:
+            print("entrei")
+            Settings.NAVSELECTED += 1
+            self.lb_preco.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getpreco()))
+            self.lb_velocity.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvelocidade()))
+            self.lb_disparo.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getdisparo()))
+            self.lb_vida.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvida()))
+
+        self.bt_unlock.setVisible(True)
+        # self.label_8.setVisible(True)
+        for u in Settings.NAVUNLOCKED:
+            if u == Settings.NAVSELECTED:
+                self.bt_unlock.setVisible(False)
+                # self.label_8.setVisible(False)
+
+        Settings.NAVIMG = str(Settings.navlist[Settings.NAVSELECTED])
+        self.frame.setStyleSheet("background-image:url(" + Settings.navlist[
+            Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")

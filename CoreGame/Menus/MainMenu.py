@@ -73,7 +73,7 @@ class Ui_Dialog(object):
         self.bs_icon.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignHCenter)
         self.bs_icon.setObjectName("bs_icon")
         self.lb_exit = QtWidgets.QPushButton(self.barra)
-        self.lb_exit.setGeometry(QtCore.QRect(1050, -1, 81, 73))
+        self.lb_exit.setGeometry(QtCore.QRect(1049, -1, 81, 73))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI Semilight")
         font.setPointSize(12)

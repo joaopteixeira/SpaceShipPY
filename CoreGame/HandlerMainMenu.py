@@ -7,6 +7,9 @@ from CoreGame.Menus.MainMenu import Ui_Dialog
 from CoreGame import Settings
 from CoreGame.Menus.HandlerStore import StoreGui
 from CoreGame.Menus.Controller.HandlerMenuNivel import NivelGui
+from CoreGame.Menus.service.ServNav import ServNav
+
+
 
 
 class MyFirstGuiProgram(Ui_Dialog):
@@ -17,6 +20,8 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.uiframe = NivelGui(QtWidgets.QFrame(self.widget))
         self.frame = self.uiframe.getframe()
         self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
+
+
 
         self.style = """
 
@@ -118,6 +123,8 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.label_3.setText(str(Settings.COINS))
         self.i = 0
 
+
+
         self.barra.setStyleSheet("QWidget{background-color:white;}")
         self.bt_powerup.setVisible(False)
         self.bt_nav.setVisible(False)
@@ -127,6 +134,7 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.bt_nav.setStyleSheet("QPushButton{background-image:url('navicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:#f2f2f2;color:#2b5259;};")
         self.bt_powerup.setStyleSheet("QPushButton{background-image:url('powerupicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:#f2f2f2;color:#2b5259;};")
         self.label_3.setStyleSheet("QLabel{background-image:url('coins.png');background-repeat:no-repeat;margin: 1px; border-style: outset;text-align:bottom;padding-top:40px;background-position: center;background-color:white;color:#2b5259;}")
+
 
         #self.bt_right_2.setStyleSheet(self.styleright)
         #self.bt_left_2.setStyleSheet(self.styleleft)
@@ -145,6 +153,8 @@ class MyFirstGuiProgram(Ui_Dialog):
         #self.bt_unlock.clicked.connect(self.unlock)
         self.bt_store.clicked.connect(self.store)
         self.bt_back.clicked.connect(self.handlerbtanterior)
+
+
 
     def store(self):
         self.uiframe = StoreGui(QtWidgets.QFrame(self.widget))

@@ -364,8 +364,8 @@ class Boss(pygame.sprite.Sprite):
         self.i +=1
 
         if self.i % Settings.frequencia_tiros_inimigos[Settings.currentlevel] == 0:
-            for j in range(20):
-                self.shoot()
+            self.shoot()
+
 
     def shoot(self):
         bullet4 = BulletIni(self.rect.centerx, self.rect.bottom , 0)
@@ -565,9 +565,8 @@ while running:
         for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
             newmob()
 
-    if i % 1600 == 0:
-        for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
-            newboss()
+    if i == 1600:
+        newboss()
 
 
     # Update

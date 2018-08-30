@@ -44,6 +44,17 @@ class Ui_Frame(object):
         self.bt_unlock.setFont(font)
         self.bt_unlock.setFlat(True)
         self.bt_unlock.setObjectName("bt_unlock")
+        self.bt_right_2 = QtWidgets.QPushButton(Frame)
+        self.bt_right_2.setGeometry(QtCore.QRect(845, 0, 141, 651))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI Semilight")
+        font.setPointSize(12)
+        self.bt_right_2.setFont(font)
+        self.bt_right_2.setStyleSheet("")
+        self.bt_right_2.setIconSize(QtCore.QSize(26, 16))
+        self.bt_right_2.setDefault(False)
+        self.bt_right_2.setFlat(True)
+        self.bt_right_2.setObjectName("bt_right_2")
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -54,6 +65,7 @@ class Ui_Frame(object):
         self.bt_left.setText(_translate("Frame", "Anterior"))
         self.bt_right.setText(_translate("Frame", "Seguinte"))
         self.bt_unlock.setText(_translate("Frame", "Desbloquear"))
+        self.bt_right_2.setText(_translate("Frame", "1"))
 
 
 if __name__ == "__main__":

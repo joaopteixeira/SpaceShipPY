@@ -175,7 +175,7 @@
     <widget class="QPushButton" name="lb_exit">
      <property name="geometry">
       <rect>
-       <x>1050</x>
+       <x>1049</x>
        <y>-1</y>
        <width>81</width>
        <height>73</height>

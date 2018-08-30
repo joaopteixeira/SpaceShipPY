@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Frame(object):
     def setupUi(self, Frame):
         Frame.setObjectName("Frame")
-        Frame.resize(1131, 651)
+        Frame.resize(1143, 651)
         Frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         Frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.bt_left = QtWidgets.QPushButton(Frame)
@@ -45,7 +45,7 @@ class Ui_Frame(object):
         self.bt_unlock.setFlat(True)
         self.bt_unlock.setObjectName("bt_unlock")
         self.lb_disparo = QtWidgets.QPushButton(Frame)
-        self.lb_disparo.setGeometry(QtCore.QRect(840, 100, 121, 41))
+        self.lb_disparo.setGeometry(QtCore.QRect(860, 320, 121, 41))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI Semilight")
         font.setPointSize(12)
@@ -56,7 +56,7 @@ class Ui_Frame(object):
         self.lb_disparo.setFlat(True)
         self.lb_disparo.setObjectName("lb_disparo")
         self.lb_velocity = QtWidgets.QPushButton(Frame)
-        self.lb_velocity.setGeometry(QtCore.QRect(840, 60, 121, 41))
+        self.lb_velocity.setGeometry(QtCore.QRect(860, 280, 121, 41))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI Semilight")
         font.setPointSize(12)
@@ -67,7 +67,7 @@ class Ui_Frame(object):
         self.lb_velocity.setFlat(True)
         self.lb_velocity.setObjectName("lb_velocity")
         self.lb_preco = QtWidgets.QPushButton(Frame)
-        self.lb_preco.setGeometry(QtCore.QRect(840, 20, 121, 41))
+        self.lb_preco.setGeometry(QtCore.QRect(860, 240, 121, 41))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI Semilight")
         font.setPointSize(12)
@@ -77,6 +77,17 @@ class Ui_Frame(object):
         self.lb_preco.setDefault(False)
         self.lb_preco.setFlat(True)
         self.lb_preco.setObjectName("lb_preco")
+        self.lb_vida = QtWidgets.QPushButton(Frame)
+        self.lb_vida.setGeometry(QtCore.QRect(860, 360, 121, 41))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI Semilight")
+        font.setPointSize(12)
+        self.lb_vida.setFont(font)
+        self.lb_vida.setStyleSheet("")
+        self.lb_vida.setIconSize(QtCore.QSize(26, 16))
+        self.lb_vida.setDefault(False)
+        self.lb_vida.setFlat(True)
+        self.lb_vida.setObjectName("lb_vida")
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -90,6 +101,7 @@ class Ui_Frame(object):
         self.lb_disparo.setText(_translate("Frame", "400"))
         self.lb_velocity.setText(_translate("Frame", "400"))
         self.lb_preco.setText(_translate("Frame", "400"))
+        self.lb_vida.setText(_translate("Frame", "400"))
 
 
 if __name__ == "__main__":

@@ -15,23 +15,26 @@ COINS = 1000
 
 NAVSELECTED = 0
 
+LEVELUNLOCKED = [0]
 
 
-vidas = 100 #Vida do player
+
+vidas = 10 #Vida do player
 
 
-currentlevel = 3           #qual o nivel selecionado
+currentlevel = 0           #qual o nivel selecionado
 
 
 backimg = ["space1.jpg", "space2.jpg", "space3.jpg", "space4.jpg"]      #Imagem do background
+
 
 ostlist = ['SpaceTheme1.mp3', 'SpaceTheme2.mp3', 'SpaceTheme3.mp3', 'SpaceTheme4.mp3', 'credits.mp3']  #Banda Sonoro
 
 quantidade_inimigos = [1,3,6,8,1]
 
-inimigoslist = ['RD1.png', "RD2.png", "nave19.jpg",'nave20.jpg']    #
+inimigoslist = ['RD1.png', "RD2.png", "nave19.jpg",'nave7.png']    #
 
-bosslist = ['boss1.jpg','boss2.jpg','boss3.jpg','boss4.png']
+bosslist = ['boss1.png','boss2.png','boss3.png','boss4.png']
 
 frequencia_tiros_inimigos = [20,20,10,5,0]
 
