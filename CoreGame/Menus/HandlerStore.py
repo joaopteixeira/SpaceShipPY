@@ -7,12 +7,23 @@ from PyQt5.QtGui import QMovie
 from PyQt5.QtCore import QByteArray,Qt
 
 class StoreGui(Ui_Frame):
-    def __init__(self,frame):
+    def __init__(self,frame,menu):
         Ui_Frame.__init__(self)
 
         self.setupUi(frame)
         self.frame = frame
-        self.frame.setStyleSheet("background-image:url(" + Settings.navlist[Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+        self.menu = menu
+        if self.menu == 0:
+            self.frame.setStyleSheet("background-image:url(" + Settings.navlist[Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+            self.nav_pw.setVisible(False)
+        elif self.menu == 1:
+            self.nav_pw.setVisible(True)
+            self.nav_pw.setStyleSheet(
+                "QPushButton{background-image:url(" + Settings.navlistMINI[Settings.NAVSELECTED] + ");color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+
+            self.frame.setStyleSheet("background-image:url(" + Settings.poweruplist[
+                Settings.POWERUPSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+
         self.navs = ServNav()
         self.styleleft = """
 
@@ -72,6 +83,7 @@ class StoreGui(Ui_Frame):
         self.bt_right.clicked.connect(self.chooseright)
         self.bt_left.clicked.connect(self.chooseleft)
 
+
         #GIF
         #self.movie = QMovie("123.gif", QByteArray(), self.frame)
         #self.movie.setCacheMode(QMovie.CacheAll)
@@ -81,52 +93,89 @@ class StoreGui(Ui_Frame):
 
 #        self.movie.start()
 
+
+
+
+
     def getframe(self):
         return self.frame
 
     def unlock(self):
         print("asd")
-        if int(Settings.COINS) >= self.navs.getnavs()[Settings.NAVSELECTED].getpreco():
-            Settings.NAVUNLOCKED.append(Settings.NAVSELECTED)
-            self.bt_unlock.setVisible(False)
-            #self.label_8.setVisible(False)
-            Settings.COINS -= self.navs.getnavs()[Settings.NAVSELECTED].getpreco()
-
-    def chooseleft(self):
-        if Settings.NAVSELECTED > 0:
-            Settings.NAVSELECTED-=1
-            self.lb_preco.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getpreco()))
-            self.lb_velocity.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvelocidade()))
-            self.lb_disparo.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getdisparo()))
-            self.lb_vida.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvida()))
-
-        self.bt_unlock.setVisible(True)
-        #self.label_8.setVisible(True)
-        for u in Settings.NAVUNLOCKED:
-            if u == Settings.NAVSELECTED:
+        if self.menu == 0:
+            if int(Settings.COINS) >= self.navs.getnavs()[Settings.NAVSELECTED].getpreco():
+                Settings.NAVUNLOCKED.append(Settings.NAVSELECTED)
                 self.bt_unlock.setVisible(False)
                 #self.label_8.setVisible(False)
+                Settings.COINS -= self.navs.getnavs()[Settings.NAVSELECTED].getpreco()
+        elif self.menu == 1:
+            if int(Settings.COINS) >= 100:
+                Settings.POWERUPUNLOCKED.append(Settings.POWERUPSELECTED)
+                self.bt_unlock.setVisible(False)
+                Settings.COINS -= 100
+                self.navs.getnavs()[Settings.NAVSELECTED].set
 
-        Settings.NAVIMG = str(Settings.navlist[Settings.NAVSELECTED])
-        self.frame.setStyleSheet("background-image:url(" + Settings.navlist[
-            Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+
+    def chooseleft(self):
+        if self.menu == 0:
+            if Settings.NAVSELECTED > 0:
+                Settings.NAVSELECTED-=1
+                self.lb_preco.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getpreco()))
+                self.lb_velocity.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvelocidade()))
+                self.lb_disparo.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getdisparo()))
+                self.lb_vida.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvida()))
+
+            self.bt_unlock.setVisible(True)
+            #self.label_8.setVisible(True)
+            for u in Settings.NAVUNLOCKED:
+                if u == Settings.NAVSELECTED:
+                    self.bt_unlock.setVisible(False)
+                    #self.label_8.setVisible(False)
+
+            Settings.NAVIMG = str(Settings.navlist[Settings.NAVSELECTED])
+            self.frame.setStyleSheet("background-image:url(" + Settings.navlist[
+                Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+
+        elif self.menu == 1:
+            if Settings.POWERUPSELECTED > 0:
+                Settings.POWERUPSELECTED-=1
+                self.bt_unlock.setVisible(True)
+            for u in Settings.POWERUPUNLOCKED:
+                if u == Settings.POWERUPSELECTED:
+                    self.bt_unlock.setVisible(False)
+
+            self.frame.setStyleSheet("background-image:url(" + Settings.poweruplist[
+                Settings.POWERUPSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
 
     def chooseright(self):
-        if Settings.NAVSELECTED < len(Settings.navlist)-1:
-            print("entrei")
-            Settings.NAVSELECTED += 1
-            self.lb_preco.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getpreco()))
-            self.lb_velocity.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvelocidade()))
-            self.lb_disparo.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getdisparo()))
-            self.lb_vida.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvida()))
+        if self.menu == 0:
+            if Settings.NAVSELECTED < len(Settings.navlist)-1:
+                print("entrei")
+                Settings.NAVSELECTED += 1
+                self.lb_preco.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getpreco()))
+                self.lb_velocity.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvelocidade()))
+                self.lb_disparo.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getdisparo()))
+                self.lb_vida.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvida()))
 
-        self.bt_unlock.setVisible(True)
-        # self.label_8.setVisible(True)
-        for u in Settings.NAVUNLOCKED:
-            if u == Settings.NAVSELECTED:
-                self.bt_unlock.setVisible(False)
-                # self.label_8.setVisible(False)
+            self.bt_unlock.setVisible(True)
+            # self.label_8.setVisible(True)
+            for u in Settings.NAVUNLOCKED:
+                if u == Settings.NAVSELECTED:
+                    self.bt_unlock.setVisible(False)
+                    # self.label_8.setVisible(False)
 
-        Settings.NAVIMG = str(Settings.navlist[Settings.NAVSELECTED])
-        self.frame.setStyleSheet("background-image:url(" + Settings.navlist[
-            Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+            Settings.NAVIMG = str(Settings.navlist[Settings.NAVSELECTED])
+            self.frame.setStyleSheet("background-image:url(" + Settings.navlist[
+                Settings.NAVSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+
+
+        elif self.menu == 1:
+            if Settings.POWERUPSELECTED < len(Settings.poweruplist)-1:
+                Settings.POWERUPSELECTED += 1
+                self.bt_unlock.setVisible(True)
+            for u in Settings.POWERUPUNLOCKED:
+                if u == Settings.POWERUPSELECTED:
+                    self.bt_unlock.setVisible(False)
+
+            self.frame.setStyleSheet("background-image:url(" + Settings.poweruplist[
+                Settings.POWERUPSELECTED] + ");background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")

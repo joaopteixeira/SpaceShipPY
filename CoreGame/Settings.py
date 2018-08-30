@@ -22,7 +22,7 @@ LEVELUNLOCKED = [0]
 vidas = 10 #Vida do player
 
 
-currentlevel = 0           #qual o nivel selecionado
+currentlevel = 4           #qual o nivel selecionado
 
 
 backimg = ["space1.jpg", "space2.jpg", "space3.jpg", "space4.jpg"]      #Imagem do background
@@ -35,6 +35,19 @@ quantidade_inimigos = [1,3,6,8,1]
 inimigoslist = ['RD1.png', "RD2.png", "nave19.jpg",'nave7.png']    #
 
 bosslist = ['boss1.png','boss2.png','boss3.png','boss4.png']
+
+bosslistLOCK = ['boss1.png','boss2-lock.png','boss3-lock.png','boss4-lock.png']
+
+#PowerUp definicoes
+poweruplist = ['pu1.png','pu2.png','pu3.png','pu4.png','pu5.png','pu6.png']
+
+POWERUPUNLOCKED = []
+
+POWERUPSELECTED = 0
+
+# -----------------------
+
+navlistMINI = ["player1-mini.png", "player2-mini.png", "player3.png"]
 
 frequencia_tiros_inimigos = [20,20,10,5,0]
 

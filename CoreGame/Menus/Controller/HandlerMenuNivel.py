@@ -66,9 +66,13 @@ class NivelGui(Ui_Frame):
         self.bt_right_2.setText("Nivel 1")
         self.bt_right_2.setStyleSheet("QPushButton{background-image:url('level.png');margin: 1px;border-style: outset;background-repeat:no-repeat;background-position: center;background-color:transparent;color:#2b5259;}")
         self.bt_unlock.setVisible(True)
+        self.label.setStyleSheet("color:#2b5259;")
+
+
         for u in Settings.LEVELUNLOCKED:
             if u == Settings.currentlevel:
                 self.bt_unlock.setVisible(False)
+                self.label.setVisible(False)
         self.bt_right.clicked.connect(self.chooseright)
         self.bt_left.clicked.connect(self.chooseleft)
 
@@ -77,30 +81,44 @@ class NivelGui(Ui_Frame):
         return self.frame
 
     def chooseright(self):
-
+        check = False
         if Settings.currentlevel < len(Settings.bosslist)-1:
             Settings.currentlevel+=1
             self.bt_right_2.setText("Nivel "+str(Settings.currentlevel+1))
         self.bt_unlock.setVisible(True)
+        self.label.setVisible(True)
         for u in Settings.LEVELUNLOCKED:
             if u == Settings.currentlevel:
                 self.bt_unlock.setVisible(False)
+                self.label.setVisible(False)
+                check = True
 
-        self.frame.setStyleSheet("background-image:url(" + Settings.bosslist[
+        if check:
+            self.frame.setStyleSheet("background-image:url(" + Settings.bosslist[
             Settings.currentlevel] + ") stretch stretch;background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
+        else:
+            self.frame.setStyleSheet("background-image:url(" + Settings.bosslistLOCK[
+                Settings.currentlevel] + ") stretch stretch;background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
 
     def chooseleft(self):
+        check = False
         if Settings.currentlevel > 0:
             Settings.currentlevel -= 1
             self.bt_right_2.setText("Nivel " + str(Settings.currentlevel + 1))
         self.bt_unlock.setVisible(True)
+        self.label.setVisible(True)
         for u in Settings.LEVELUNLOCKED:
             if u == Settings.currentlevel:
                 self.bt_unlock.setVisible(False)
+                self.label.setVisible(False)
+                check = True
 
-        self.frame.setStyleSheet("background-image:url(" + Settings.bosslist[
+        if check:
+            self.frame.setStyleSheet("background-image:url(" + Settings.bosslist[
             Settings.currentlevel] + ") stretch stretch;background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
-
+        else:
+            self.frame.setStyleSheet("background-image:url(" + Settings.bosslistLOCK[
+                Settings.currentlevel] + ") stretch stretch;background-repeat:no-repeat;background-position: center;background-color:#f2f2f2;")
 
 
             #Settings.NAVIMG = str(Settings.backimg[Settings.currentlevel])

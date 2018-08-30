@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '.\UI\framestore.ui'
+# Form implementation generated from reading ui file '.\UI\framenivel.ui'
 #
 # Created by: PyQt5 UI code generator 5.11.2
 #
@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Frame(object):
     def setupUi(self, Frame):
         Frame.setObjectName("Frame")
-        Frame.resize(1131, 651)
+        Frame.resize(1143, 651)
         Frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         Frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.bt_left = QtWidgets.QPushButton(Frame)
@@ -44,6 +44,14 @@ class Ui_Frame(object):
         self.bt_unlock.setFont(font)
         self.bt_unlock.setFlat(True)
         self.bt_unlock.setObjectName("bt_unlock")
+        self.label = QtWidgets.QLabel(Frame)
+        self.label.setGeometry(QtCore.QRect(280, 270, 591, 101))
+        font = QtGui.QFont()
+        font.setFamily("Yu Gothic UI Semilight")
+        font.setPointSize(40)
+        self.label.setFont(font)
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName("label")
         self.bt_right_2 = QtWidgets.QPushButton(Frame)
         self.bt_right_2.setGeometry(QtCore.QRect(845, 0, 141, 651))
         font = QtGui.QFont()
@@ -65,7 +73,8 @@ class Ui_Frame(object):
         self.bt_left.setText(_translate("Frame", "Anterior"))
         self.bt_right.setText(_translate("Frame", "Seguinte"))
         self.bt_unlock.setText(_translate("Frame", "Desbloquear"))
-        self.bt_right_2.setText(_translate("Frame", "1"))
+        self.label.setText(_translate("Frame", "BLOQUEADO"))
+        self.bt_right_2.setText(_translate("Frame", "Nivel 1"))
 
 
 if __name__ == "__main__":

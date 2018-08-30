@@ -109,149 +109,35 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="lb_disparo">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>860</x>
-     <y>320</y>
-     <width>121</width>
-     <height>41</height>
+     <x>280</x>
+     <y>270</y>
+     <width>591</width>
+     <height>101</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Yu Gothic UI Semilight</family>
-     <pointsize>12</pointsize>
+     <pointsize>40</pointsize>
     </font>
    </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
    <property name="text">
-    <string>400</string>
+    <string>BLOQUEADO</string>
    </property>
-   <property name="iconSize">
-    <size>
-     <width>26</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="default">
-    <bool>false</bool>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="lb_velocity">
+  <widget class="QPushButton" name="bt_right_2">
    <property name="geometry">
     <rect>
-     <x>860</x>
-     <y>280</y>
-     <width>121</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Yu Gothic UI Semilight</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>400</string>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>26</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="default">
-    <bool>false</bool>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="lb_preco">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>240</y>
-     <width>121</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Yu Gothic UI Semilight</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>400</string>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>26</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="default">
-    <bool>false</bool>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="lb_vida">
-   <property name="geometry">
-    <rect>
-     <x>860</x>
-     <y>360</y>
-     <width>121</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Yu Gothic UI Semilight</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true"/>
-   </property>
-   <property name="text">
-    <string>400</string>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>26</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="default">
-    <bool>false</bool>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="nav_pw">
-   <property name="geometry">
-    <rect>
-     <x>452</x>
+     <x>845</x>
      <y>0</y>
-     <width>221</width>
-     <height>150</height>
+     <width>141</width>
+     <height>651</height>
     </rect>
    </property>
    <property name="font">
@@ -260,8 +146,20 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <property name="text">
-    <string/>
+    <string>Nivel 1</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>26</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="default">
+    <bool>false</bool>
    </property>
    <property name="flat">
     <bool>true</bool>
