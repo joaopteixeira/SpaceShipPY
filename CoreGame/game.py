@@ -27,7 +27,7 @@ pygame.display.set_caption("SpaceShip Dário")
 clock = pygame.time.Clock()
 
 
-#Instaciar e carregar imagens pro SPRITE SPRITE
+#Instaciar e carregar imagens pro SPRITE SPRITEaaaaaaaaaaaaa
 
 
 meteors = []

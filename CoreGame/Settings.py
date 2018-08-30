@@ -12,7 +12,7 @@ WITDH = 1100
 
 HEIGHT = 900
 
-INILOCAL = [WITDH - WITDH - 5,WITDH-25]     #Onde Spawna os Inimigos
+INILOCAL = [WITDH - WITDH - 5,WITDH-25]     #Onde Spawna os Inimigos INIMIHOSa
 
 COINS = 1000
 
