@@ -31,12 +31,21 @@ clock = pygame.time.Clock()
 
 
 meteors = []
-meteor_list1 =['meteorBrown_big1.png','meteorBrown_med1.png',
+
+if Settings.currentlevel <= 3:
+    meteor_list1 =['meteorBrown_big1.png','meteorBrown_med1.png',
               'meteorBrown_med1.png','meteorBrown_med3.png',
               'meteorBrown_small1.png','meteorBrown_small2.png',
               'meteorBrown_tiny1.png']
 
+if Settings.currentlevel == 4:
+    meteor_list1 =['whiskey.png','whiskey.png','whiskey.png','whiskey.png','whiskey.png','whiskey.png','whiskey.png']
 
+if Settings.currentlevel == 5:
+    meteor_list1 =['b1.png','b2.png','b3.png','b4.png','b1.png','b2.png','b3.png']
+
+if Settings.currentlevel == 6:
+    meteor_list1 =['Creditos1.png','Creditos2.png','Creditos3.png','Creditos4.png','Creditos5.png','Creditos1.png','Creditos2.png','Creditos3.png','Creditos4.png','Creditos5.png']
 
 inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel])).convert()
 boss_img = pygame.image.load((Settings.bosslist[Settings.currentlevel])).convert()
