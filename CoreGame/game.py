@@ -49,6 +49,7 @@ if Settings.currentlevel == 6:
 
 inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel])).convert()
 boss_img = pygame.image.load((Settings.bosslist[Settings.currentlevel])).convert()
+boss1_img = pygame.image.load('dario1.png').convert()
 
 
 img_dir = ((__file__), "Laser.png")
@@ -656,6 +657,8 @@ while running:
             random.choice(expl_sounds).play()
             expl = Explosion(hit.rect.center, 'pequena')
             all_sprites.add(expl)
+            bosses.sprites()[0].image = pygame.transform.scale(boss1_img, (150, 150))
+            bosses.sprites()[0].image.set_colorkey(BLACK)
 
 
         if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.75 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80 :

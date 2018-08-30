@@ -25,7 +25,7 @@ vidas = 100 #Vida do player
 
 
 
-currentlevel = 6           #qual o nivel selecionado 5 é o endless, 6 o creditos
+currentlevel = 4           #qual o nivel selecionado 5 é o endless, 6 o creditos
 
 
 
@@ -39,7 +39,7 @@ quantidade_inimigos = [1,3,6,8,8,6,1]
 
 inimigoslist = ['RD1.png', "ini2.png","black2.png",'nave7.png','tabaco.png',"RD2.png","atec-logo.png"]    #
 
-bosslist = ['boss1.png','boss2.png','nave13.png','boss4.png','dario.png','dario.png',"fim.png"]
+bosslist = ['boss1.png','boss2.png','boss3.png','boss4.png','dario.png','dario.png',"fim.png"]
 
 
 bosslistLOCK = ['boss1.png','boss2-lock.png','boss3-lock.png','boss4-lock.png']
