@@ -653,7 +653,7 @@ while running:
         pontos += 10
         lifeboss += 1
         print(lifeboss)
-        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.30 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.35:
+        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.10 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.35:
             random.choice(expl_sounds).play()
             expl = Explosion(hit.rect.center, 'pequena')
             all_sprites.add(expl)
@@ -661,7 +661,7 @@ while running:
             bosses.sprites()[0].image.set_colorkey(BLACK)
 
 
-        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.75 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80 :
+        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.20 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80 :
 
             random.choice(expl_sounds).play()
             expl = Explosion(hit.rect.center, 'grande')
