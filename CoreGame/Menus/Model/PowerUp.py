@@ -4,10 +4,11 @@
 
 
 class PowerUp():
-    def __init__(self,image,valor,tipo):
+    def __init__(self,image,valor,tipo,preco):
         self.image = image
         self.valor = valor
         self.tipo = tipo
+        self.preco = preco
 
 
     def getimage(self):
@@ -27,3 +28,9 @@ class PowerUp():
 
     def settipo(self, tipo):
         self.tipo = tipo
+
+    def getpreco(self):
+        return self.preco
+
+    def setpreco(self, preco):
+        self.preco = preco
