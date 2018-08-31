@@ -25,7 +25,7 @@ vidas = 100 #Vida do player
 
 
 
-currentlevel = 4           #qual o nivel selecionado 5 é o endless, 6 o creditos
+currentlevel = 0           #qual o nivel selecionado 5 é o endless, 6 o creditos
 
 
 
@@ -42,7 +42,7 @@ inimigoslist = ['RD1.png', "ini2.png","black2.png",'nave7.png','tabaco.png',"RD2
 bosslist = ['boss1.png','boss2.png','boss3.png','boss4.png','dario.png','dario.png',"fim.png"]
 
 
-bosslistLOCK = ['boss1.png','boss2-lock.png','boss3-lock.png','boss4-lock.png']
+bosslistLOCK = ['boss1.png','boss2-lock.png','boss3-lock.png','boss4-lock.png','dario-lock.png']
 
 #PowerUp definicoes
 poweruplist = ['pu1.png','pu2.png','pu3.png','pu4.png','pu5.png','pu6.png']
@@ -55,7 +55,7 @@ frequencia_tiros_inimigos = [20,20,10,5,10,10,100000]
 # -----------------------
 
 total_vida_boss = [55.00,70.00,80.00,100.00,200.00,100.00,200.00]
-navlistMINI = ["player1-mini.png", "player2-mini.png", "player3.png"]
+navlistMINI = ["player1-mini.png", "player2-mini.png", "player3-mini.png"]
 
 
 

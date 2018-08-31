@@ -17,10 +17,10 @@ class MyFirstGuiProgram(Ui_Dialog):
         Ui_Dialog.__init__(self)
         dialog.setWindowFlags(QtCore.Qt.CustomizeWindowHint)
         self.setupUi(dialog)
-        self.uiframe = NivelGui(QtWidgets.QFrame(self.widget))
+        self.uiframe = NivelGui(QtWidgets.QFrame(self.widget),0)
         self.frame = self.uiframe.getframe()
         self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
-
+        self.menu = 0
 
 
         self.style = """
@@ -126,13 +126,25 @@ class MyFirstGuiProgram(Ui_Dialog):
 
 
         self.barra.setStyleSheet("QWidget{background-color:white;}")
-        self.bt_powerup.setVisible(False)
-        self.bt_nav.setVisible(False)
+
+        if self.menu == 0:
+            self.bt_nav.setText("Niveis")
+            self.bt_powerup.setText("Modo Livre")
+
+            self.bt_nav.setStyleSheet(
+                "QPushButton{background-image:url('modelevel.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+            self.bt_powerup.setStyleSheet(
+                "QPushButton{background-image:url('modearcade.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+
+        elif self.menu == 1:
+            self.bt_nav.setStyleSheet(
+                "QPushButton{background-image:url('navicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+            self.bt_powerup.setStyleSheet(
+                "QPushButton{background-image:url('powerupicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+
 
         self.bt_play.setStyleSheet("QPushButton{background-image:url('play.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
         self.bt_back.setStyleSheet("QPushButton{background-image:url('anterior.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
-        self.bt_nav.setStyleSheet("QPushButton{background-image:url('navicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
-        self.bt_powerup.setStyleSheet("QPushButton{background-image:url('powerupicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
         self.label_3.setStyleSheet("QLabel{background-image:url('coins.png');background-repeat:no-repeat;margin: 1px; border-style: outset;text-align:bottom;padding-top:40px;background-position: center;background-color:white;color:#2b5259;}")
 
 
@@ -158,18 +170,37 @@ class MyFirstGuiProgram(Ui_Dialog):
 
 
     def handlebtnav(self):
-        self.uiframe = StoreGui(QtWidgets.QFrame(self.widget), 0)
-        self.frame = self.uiframe.getframe()
-        self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
-        self.label_3.setText(str(Settings.COINS))
-        self.frame.show()
+        if self.menu == 1:
+            Settings.NAVSELECTED = 0
+            self.uiframe = StoreGui(QtWidgets.QFrame(self.widget), 0)
+            self.frame = self.uiframe.getframe()
+            self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
+            self.label_3.setText(str(Settings.COINS))
+            self.frame.show()
+        elif self.menu == 0:
+            self.uiframe = NivelGui(QtWidgets.QFrame(self.widget), 0)
+            self.frame = self.uiframe.getframe()
+            self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
+            self.label_3.setText(str(Settings.COINS))
+            self.frame.show()
 
     def handlebtpw(self):
-        self.uiframe = StoreGui(QtWidgets.QFrame(self.widget), 1)
-        self.frame = self.uiframe.getframe()
-        self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
-        self.label_3.setText(str(Settings.COINS))
-        self.frame.show()
+        if self.menu == 1:
+            for i in Settings.NAVUNLOCKED:
+                if i == Settings.NAVSELECTED:
+                    self.uiframe = StoreGui(QtWidgets.QFrame(self.widget), 1)
+                    self.frame = self.uiframe.getframe()
+                    self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
+                    self.label_3.setText(str(Settings.COINS))
+                    self.frame.show()
+
+
+        elif self.menu == 0:
+            self.uiframe = NivelGui(QtWidgets.QFrame(self.widget), 1)
+            self.frame = self.uiframe.getframe()
+            self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
+            self.label_3.setText(str(Settings.COINS))
+            self.frame.show()
 
 
     def store(self):
@@ -183,8 +214,8 @@ class MyFirstGuiProgram(Ui_Dialog):
             
             """
         self.bt_store.setStyleSheet(self.style)
-        self.bt_powerup.setVisible(True)
-        self.bt_nav.setVisible(True)
+        self.menu = 1
+        self.mudarmenu()
 
     def play(self):
         print(Settings.NAVIMG)
@@ -192,6 +223,24 @@ class MyFirstGuiProgram(Ui_Dialog):
             if u == Settings.NAVSELECTED:
                 from CoreGame import game
                 reload(game)
+
+    def mudarmenu(self):
+        if self.menu == 0:
+            self.bt_nav.setText("Niveis")
+            self.bt_powerup.setText("Modo Livre")
+
+            self.bt_nav.setStyleSheet(
+                "QPushButton{background-image:url('modelevel.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+            self.bt_powerup.setStyleSheet(
+                "QPushButton{background-image:url('modearcade.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+
+        elif self.menu == 1:
+            self.bt_nav.setText("Navs")
+            self.bt_powerup.setText("PowerUps")
+            self.bt_nav.setStyleSheet(
+                "QPushButton{background-image:url('navicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+            self.bt_powerup.setStyleSheet(
+                "QPushButton{background-image:url('powerupicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
 
 
     def reloadstyle(self):
@@ -212,16 +261,15 @@ class MyFirstGuiProgram(Ui_Dialog):
             """
         self.bt_store.setStyleSheet(self.style)
 
-
     def handlerbtanterior(self):
         self.reloadstyle()
-        self.uiframe = NivelGui(QtWidgets.QFrame(self.widget))
+        self.uiframe = NivelGui(QtWidgets.QFrame(self.widget),0)
         self.frame = self.uiframe.getframe()
         self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
         self.label_3.setText(str(Settings.COINS))
         self.frame.show()
-        self.bt_powerup.setVisible(False)
-        self.bt_nav.setVisible(False)
+        self.menu = 0
+        self.mudarmenu()
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
