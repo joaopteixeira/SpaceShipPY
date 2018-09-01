@@ -9,7 +9,7 @@ WIDTH = Settings.WITDH    # Largura
 HEIGHT = Settings.HEIGHT  # ALTURA
 FPS = 60
 
-
+PGC = 0
 
 # define cores
 WHITE = (255, 255, 255)
@@ -45,9 +45,15 @@ if Settings.currentlevel == 5:
     meteor_list1 =['b1.png','b2.png','b3.png','b4.png','b1.png','b2.png','b3.png']
 
 if Settings.currentlevel == 6:
-    meteor_list1 =['Creditos1.png','Creditos2.png','Creditos3.png','Creditos4.png','Creditos5.png','Creditos1.png','Creditos2.png','Creditos3.png','Creditos4.png','Creditos5.png']
+    meteor_list1 =['Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png']
 
-inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel])).convert()
+
+if Settings.currentlevel == 6:
+    inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel][0])).convert()
+else:
+    inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel])).convert()
+
+
 boss_img = pygame.image.load((Settings.bosslist[Settings.currentlevel])).convert()
 boss1_img = pygame.image.load('dario1.png').convert()
 boss2_img = pygame.image.load('dario2.png').convert()
@@ -177,7 +183,7 @@ class BulletIni(pygame.sprite.Sprite):
 
         # kill if it moves off the top of the screen
         print(self.rect.y)
-        if self.rect.y > 715:
+        if self.rect.y > HEIGHT + 20:
             print("kill")
             self.kill()
 
@@ -299,7 +305,19 @@ class Inimigos(pygame.sprite.Sprite):
         self.image = pygame.Surface((10, 12))
         self.image = inimigo_img
 
-        self.image = pygame.transform.scale(inimigo_img, (50, 50))
+        if Settings.currentlevel == 6:
+            PGC =+ 1
+            if PGC > 10:
+                PGC = 0
+            self.image = pygame.image.load((Settings.inimigoslist[Settings.currentlevel][PGC])).convert()
+
+
+
+
+        if Settings.currentlevel == 6:
+            self.image = pygame.transform.scale(inimigo_img, (400, 400))
+        else:
+            self.image = pygame.transform.scale(inimigo_img, (50, 50))
 
         self.rect = self.image.get_rect()
         self.radius = int(self.rect.width * .20 / 2)
@@ -655,21 +673,23 @@ while running:
         pontos += 10
         lifeboss += 1
         print(lifeboss)
-        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.10 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.35:
+        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.25 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.35:
             random.choice(expl_sounds).play()
             expl = Explosion(hit.rect.center, 'pequena')
             all_sprites.add(expl)
-            bosses.sprites()[0].image = pygame.transform.scale(boss1_img, (150, 150))
-            bosses.sprites()[0].image.set_colorkey(BLACK)
+            if Settings.currentlevel == 4:
+                bosses.sprites()[0].image = pygame.transform.scale(boss1_img, (150, 150))
+                bosses.sprites()[0].image.set_colorkey(BLACK)
 
 
-        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.20 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80 :
+        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.75 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80 :
 
             random.choice(expl_sounds).play()
             expl = Explosion(hit.rect.center, 'grande')
             all_sprites.add(expl)
-            bosses.sprites()[0].image = pygame.transform.scale(boss2_img, (150, 150))
-            bosses.sprites()[0].image.set_colorkey(BLACK)
+            if Settings.currentlevel == 4:
+                bosses.sprites()[0].image = pygame.transform.scale(boss1_img, (150, 150))
+                bosses.sprites()[0].image.set_colorkey(BLACK)
 
         if lifeboss == Settings.total_vida_boss[Settings.currentlevel]:
 
