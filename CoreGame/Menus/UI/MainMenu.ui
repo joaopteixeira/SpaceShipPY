@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1131</width>
-    <height>804</height>
+    <height>842</height>
    </rect>
   </property>
   <property name="font">
@@ -55,7 +55,7 @@
      <x>0</x>
      <y>0</y>
      <width>1161</width>
-     <height>811</height>
+     <height>841</height>
     </rect>
    </property>
    <widget class="QWidget" name="barra" native="true">
@@ -245,7 +245,7 @@
       <x>980</x>
       <y>700</y>
       <width>151</width>
-      <height>101</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="font">
@@ -289,7 +289,7 @@ color: rgb(200, 200, 200);</string>
       <x>830</x>
       <y>700</y>
       <width>151</width>
-      <height>101</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="font">
@@ -316,7 +316,7 @@ color: rgb(200, 200, 200);</string>
       <x>680</x>
       <y>700</y>
       <width>151</width>
-      <height>101</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="font">
@@ -343,7 +343,7 @@ color: rgb(200, 200, 200);</string>
       <x>530</x>
       <y>700</y>
       <width>151</width>
-      <height>101</height>
+      <height>141</height>
      </rect>
     </property>
     <property name="font">
@@ -359,6 +359,60 @@ color: rgb(200, 200, 200);</string>
     </property>
     <property name="text">
      <string>PowerUps</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="nav_baixo">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>700</y>
+      <width>150</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semilight</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:white;</string>
+    </property>
+    <property name="text">
+     <string>Nav Escolhida</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="nivelescolhido">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>700</y>
+      <width>150</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Yu Gothic UI Semilight</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:white;</string>
+    </property>
+    <property name="text">
+     <string>Nivel Escolhido</string>
     </property>
     <property name="flat">
      <bool>true</bool>

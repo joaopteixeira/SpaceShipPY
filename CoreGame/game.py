@@ -298,7 +298,9 @@ class Inimigos(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((10, 12))
         self.image = inimigo_img
+
         self.image = pygame.transform.scale(inimigo_img, (50, 50))
+
         self.rect = self.image.get_rect()
         self.radius = int(self.rect.width * .20 / 2)
         self.image.set_colorkey(BLACK)

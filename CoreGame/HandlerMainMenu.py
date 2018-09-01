@@ -8,8 +8,7 @@ from CoreGame import Settings
 from CoreGame.Menus.HandlerStore import StoreGui
 from CoreGame.Menus.Controller.HandlerMenuNivel import NivelGui
 from CoreGame.Menus.service.ServNav import ServNav
-
-
+from CoreGame.Menus.service.ServPowerUp import ServPowerUp
 
 
 class MyFirstGuiProgram(Ui_Dialog):
@@ -17,11 +16,14 @@ class MyFirstGuiProgram(Ui_Dialog):
         Ui_Dialog.__init__(self)
         dialog.setWindowFlags(QtCore.Qt.CustomizeWindowHint)
         self.setupUi(dialog)
-        self.uiframe = NivelGui(QtWidgets.QFrame(self.widget),0)
+        self.menunivel = 0
+        self.dialog = dialog
+        self.uiframe = NivelGui(QtWidgets.QFrame(self.widget),self.menunivel,self.nivelescolhido)
         self.frame = self.uiframe.getframe()
         self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
         self.menu = 0
-
+        self.navs = ServNav()
+        self.pwups = ServPowerUp()
 
         self.style = """
 
@@ -123,7 +125,7 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.label_3.setText(str(Settings.COINS))
         self.i = 0
 
-
+        self.nav_baixo.setStyleSheet("QPushButton{background-image:url(" + Settings.navlistMINI[Settings.NAVESCOLHIDA] + ");color:#2b5259;background-color:transparent;padding-top:110px;background-position: center; background-repeat:no-repeat;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
 
         self.barra.setStyleSheet("QWidget{background-color:white;}")
 
@@ -132,19 +134,19 @@ class MyFirstGuiProgram(Ui_Dialog):
             self.bt_powerup.setText("Modo Livre")
 
             self.bt_nav.setStyleSheet(
-                "QPushButton{background-image:url('modelevel.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+                "QPushButton{background-image:url('modelevel.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
             self.bt_powerup.setStyleSheet(
-                "QPushButton{background-image:url('modearcade.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+                "QPushButton{background-image:url('modearcade.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
 
         elif self.menu == 1:
             self.bt_nav.setStyleSheet(
-                "QPushButton{background-image:url('navicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+                "QPushButton{background-image:url('navicon.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
             self.bt_powerup.setStyleSheet(
-                "QPushButton{background-image:url('powerupicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+                "QPushButton{background-image:url('powerupicon.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
 
 
-        self.bt_play.setStyleSheet("QPushButton{background-image:url('play.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
-        self.bt_back.setStyleSheet("QPushButton{background-image:url('anterior.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+        self.bt_play.setStyleSheet("QPushButton{background-image:url('play.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+        self.bt_back.setStyleSheet("QPushButton{background-image:url('anterior.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
         self.label_3.setStyleSheet("QLabel{background-image:url('coins.png');background-repeat:no-repeat;margin: 1px; border-style: outset;text-align:bottom;padding-top:40px;background-position: center;background-color:white;color:#2b5259;}")
 
 
@@ -172,13 +174,14 @@ class MyFirstGuiProgram(Ui_Dialog):
     def handlebtnav(self):
         if self.menu == 1:
             Settings.NAVSELECTED = 0
-            self.uiframe = StoreGui(QtWidgets.QFrame(self.widget), 0)
+            self.uiframe = StoreGui(QtWidgets.QFrame(self.widget), 0,self.navs,self.pwups,self.nav_baixo,self.label_3)
             self.frame = self.uiframe.getframe()
             self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
             self.label_3.setText(str(Settings.COINS))
             self.frame.show()
         elif self.menu == 0:
-            self.uiframe = NivelGui(QtWidgets.QFrame(self.widget), 0)
+            self.menunivel = 0
+            self.uiframe = NivelGui(QtWidgets.QFrame(self.widget), 0,self.nivelescolhido)
             self.frame = self.uiframe.getframe()
             self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
             self.label_3.setText(str(Settings.COINS))
@@ -188,7 +191,7 @@ class MyFirstGuiProgram(Ui_Dialog):
         if self.menu == 1:
             for i in Settings.NAVUNLOCKED:
                 if i == Settings.NAVSELECTED:
-                    self.uiframe = StoreGui(QtWidgets.QFrame(self.widget), 1)
+                    self.uiframe = StoreGui(QtWidgets.QFrame(self.widget), 1,self.navs,self.pwups,self.nav_baixo,self.label_3)
                     self.frame = self.uiframe.getframe()
                     self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
                     self.label_3.setText(str(Settings.COINS))
@@ -196,7 +199,8 @@ class MyFirstGuiProgram(Ui_Dialog):
 
 
         elif self.menu == 0:
-            self.uiframe = NivelGui(QtWidgets.QFrame(self.widget), 1)
+            self.menunivel = 1
+            self.uiframe = NivelGui(QtWidgets.QFrame(self.widget), 1,self.nivelescolhido)
             self.frame = self.uiframe.getframe()
             self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
             self.label_3.setText(str(Settings.COINS))
@@ -204,7 +208,7 @@ class MyFirstGuiProgram(Ui_Dialog):
 
 
     def store(self):
-        self.uiframe = StoreGui(QtWidgets.QFrame(self.widget),0)
+        self.uiframe = StoreGui(QtWidgets.QFrame(self.widget),0,self.navs,self.pwups,self.nav_baixo,self.label_3)
         self.frame = self.uiframe.getframe()
         self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
         self.label_3.setText(str(Settings.COINS))
@@ -219,10 +223,17 @@ class MyFirstGuiProgram(Ui_Dialog):
 
     def play(self):
         print(Settings.NAVIMG)
+        check = False
         for u in Settings.NAVUNLOCKED:
             if u == Settings.NAVSELECTED:
-                from CoreGame import game
-                reload(game)
+                check = True
+        if check:
+            Settings.currentlevel = Settings.BOSSESCOLHIDO
+            Settings.NAVIMG = Settings.navlist[Settings.NAVESCOLHIDA]
+            self.dialog.setEnabled(False)
+            from CoreGame import game
+            reload(game)
+            self.dialog.setEnabled(True)
 
     def mudarmenu(self):
         if self.menu == 0:
@@ -230,17 +241,17 @@ class MyFirstGuiProgram(Ui_Dialog):
             self.bt_powerup.setText("Modo Livre")
 
             self.bt_nav.setStyleSheet(
-                "QPushButton{background-image:url('modelevel.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+                "QPushButton{background-image:url('modelevel.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
             self.bt_powerup.setStyleSheet(
-                "QPushButton{background-image:url('modearcade.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+                "QPushButton{background-image:url('modearcade.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
 
         elif self.menu == 1:
             self.bt_nav.setText("Navs")
             self.bt_powerup.setText("PowerUps")
             self.bt_nav.setStyleSheet(
-                "QPushButton{background-image:url('navicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+                "QPushButton{background-image:url('navicon.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
             self.bt_powerup.setStyleSheet(
-                "QPushButton{background-image:url('powerupicon.png');color:#2b5259;padding-top:60px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
+                "QPushButton{background-image:url('powerupicon.png');color:#2b5259;padding-top:80px;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
 
 
     def reloadstyle(self):
@@ -263,13 +274,16 @@ class MyFirstGuiProgram(Ui_Dialog):
 
     def handlerbtanterior(self):
         self.reloadstyle()
-        self.uiframe = NivelGui(QtWidgets.QFrame(self.widget),0)
+        self.uiframe = NivelGui(QtWidgets.QFrame(self.widget),self.menunivel,self.nivelescolhido)
         self.frame = self.uiframe.getframe()
         self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
         self.label_3.setText(str(Settings.COINS))
         self.frame.show()
         self.menu = 0
         self.mudarmenu()
+
+    def getlbnav(self):
+        return self.nav_baixo
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

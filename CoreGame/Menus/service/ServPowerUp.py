@@ -6,8 +6,8 @@ class ServPowerUp():
         self.arpw = []
         self.mockupdata()
 
-    def addpw(self,image,valor,tipo):
-        self.arpw.append(PowerUp(image,valor,tipo))
+    def addpw(self,image,valor,tipo,preco):
+        self.arpw.append(PowerUp(image,valor,tipo,preco))
 
     def getpw(self):
         return self.arpw
