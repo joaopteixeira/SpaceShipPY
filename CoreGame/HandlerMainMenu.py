@@ -3,6 +3,7 @@ from importlib import reload
 
 from PyQt5 import QtWidgets, QtCore
 
+from CoreGame.Menus.HandlerCoins import CoinsGui
 from CoreGame.Menus.MainMenu import Ui_Dialog
 from CoreGame import Settings
 from CoreGame.Menus.HandlerStore import StoreGui
@@ -169,6 +170,19 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.bt_powerup.clicked.connect(self.handlebtpw)
         self.bt_nav.clicked.connect(self.handlebtnav)
         self.bt_back.clicked.connect(self.handlerbtanterior)
+        self.ls_freecoins.clicked.connect(self.handlerbtcoins)
+
+    def handlerbtcoins(self):
+        self.uiframe = CoinsGui(QtWidgets.QFrame(self.widget),self.label_3)
+        self.frame = self.uiframe.getframe()
+        self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
+        self.label_3.setText(str(Settings.COINS))
+        self.frame.show()
+        self.bt_powerup.setVisible(False)
+        self.bt_nav.setVisible(False)
+        self.bt_play.setVisible(False)
+        self.nav_baixo.setVisible(False)
+        self.nivelescolhido.setVisible(False)
 
 
     def handlebtnav(self):

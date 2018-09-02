@@ -342,6 +342,11 @@ class Inimigos(pygame.sprite.Sprite):
         elif self.rect.left < 0:
             self.speedx *= -1
 
+        if self.rect.bottom > HEIGHT - 300:
+            self.speedy*=-1
+        elif self.rect.top < 0:
+            self.speedy*=-1
+
 
 
 
