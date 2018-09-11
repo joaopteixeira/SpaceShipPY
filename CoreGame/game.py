@@ -8,8 +8,7 @@ from CoreGame import Settings
 WIDTH = Settings.WITDH    # Largura
 HEIGHT = Settings.HEIGHT  # ALTURA
 FPS = 60
-
-
+PGC = 0
 
 # define cores
 WHITE = (255, 255, 255)
@@ -23,11 +22,11 @@ BLUE = (0, 0, 255)
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("SpaceShip Dário")
+pygame.display.set_caption("Ivansions from OtherWorld")
 clock = pygame.time.Clock()
 
 
-#Instaciar e carregar imagens pro SPRITE SPRITEaaaaaaaaaaaaa
+#Instaciar e carregar imagens pro SPRITE
 
 
 meteors = []
@@ -45,9 +44,15 @@ if Settings.currentlevel == 5:
     meteor_list1 =['b1.png','b2.png','b3.png','b4.png','b1.png','b2.png','b3.png']
 
 if Settings.currentlevel == 6:
-    meteor_list1 =['Creditos1.png','Creditos2.png','Creditos3.png','Creditos4.png','Creditos5.png','Creditos1.png','Creditos2.png','Creditos3.png','Creditos4.png','Creditos5.png']
+    meteor_list1 =['Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png']
 
-inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel])).convert()
+
+if Settings.currentlevel == 6:
+    inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel][0])).convert()
+else:
+    inimigo_img = pygame.image.load((Settings.inimigoslist[Settings.currentlevel])).convert()
+
+
 boss_img = pygame.image.load((Settings.bosslist[Settings.currentlevel])).convert()
 boss1_img = pygame.image.load('dario1.png').convert()
 boss2_img = pygame.image.load('dario2.png').convert()
@@ -177,7 +182,7 @@ class BulletIni(pygame.sprite.Sprite):
 
         # kill if it moves off the top of the screen
         print(self.rect.y)
-        if self.rect.y > 715:
+        if self.rect.y > HEIGHT + 20:
             print("kill")
             self.kill()
 
@@ -298,7 +303,21 @@ class Inimigos(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((10, 12))
         self.image = inimigo_img
-        self.image = pygame.transform.scale(inimigo_img, (50, 50))
+
+        if Settings.currentlevel == 6:
+            PGC =+ 1
+            if PGC > 10:
+                PGC = 0
+            self.image = pygame.image.load((Settings.inimigoslist[Settings.currentlevel][PGC])).convert()
+
+
+
+
+        if Settings.currentlevel == 6:
+            self.image = pygame.transform.scale(inimigo_img, (400, 400))
+        else:
+            self.image = pygame.transform.scale(inimigo_img, (50, 50))
+
         self.rect = self.image.get_rect()
         self.radius = int(self.rect.width * .20 / 2)
         self.image.set_colorkey(BLACK)
@@ -321,6 +340,11 @@ class Inimigos(pygame.sprite.Sprite):
             self.speedx *= -1
         elif self.rect.left < 0:
             self.speedx *= -1
+
+        if self.rect.bottom > HEIGHT - 300:
+            self.speedy*=-1
+        elif self.rect.top < 0:
+            self.speedy*=-1
 
 
 
@@ -524,6 +548,7 @@ pygame.mixer.music.play(loops=-1)
 
 # Game loop
 game_over = True
+tempinho=0
 i=0
 pup = 1
 contador = Settings.vidas
@@ -533,6 +558,7 @@ cooldown = 0
 running = True
 while running:
     i+=1
+    tempinho+=1
     #if game_over:
         #show_go_screen()
     # keep loop running at the right speed
@@ -557,27 +583,84 @@ while running:
 
 #PROGRESSAO DE INIMIGOS E NO FIM ENDBOSS
 
-    if i == 300:
+    if tempinho == 300:
         for j in range(1):
-
             newinim()
 
-    if i % 600 == 0:
-        for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
-
+    if tempinho % 600 == 0:
             newmob()
 
-    if i % 800 == 0:
-        for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
+    if tempinho == 800 == 0:
+        for j in range(1):
             newinim()
 
-    if i % 1200 == 0:
-        for j in range(Settings.quantidade_inimigos[Settings.currentlevel]):
-            newmob()
+    if tempinho == 1200:
+        newmob()
 
-    if i == 1600:
+    if tempinho == 1600:
+        newmob()
+
+    if tempinho == 1800:
+        for j in range(1):
+            newinim()
+
+    if tempinho == 2000:
+        newmob()
+
+    if tempinho == 2200:
+        newinim()
+
+    if tempinho == 2400:
+        newmob()
+
+    if tempinho == 2600:
+        newinim()
+
+    if tempinho == 3000:
+        newinim()
+
+    if tempinho == 3200:
+        newmob()
+
+    if tempinho == 3500:
+        newinim()
+
+    if tempinho == 3800:
+        newmob()
+
+    if tempinho == 4100:
+        newinim()
+
+    if tempinho == 4500:
+        newmob()
+
+    if tempinho == 4800:
+        newinim()
+
+    if tempinho == 5400:
+        newmob()
+
+    if tempinho == 5800:
+        newinim()
+
+    if tempinho == 6300:
+        newmob()
+
+    if tempinho == 6800:
+        newinim()
+
+    if tempinho == 7100:
+        newinim()
+
+    if tempinho == 7300:
+        newmob()
+
+    if tempinho == 6250:
+        newinim()
+
+
+    if tempinho == 8200:
         newboss()
-
 
     # Update
     all_sprites.update()
@@ -588,7 +671,8 @@ while running:
     else:
         bs+=1
 
-
+    print("Tempo::")
+    print(tempinho)
 
     # check to see if a bullet hit a mob
     hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
@@ -612,7 +696,6 @@ while running:
         if cooldown == 0:
             expl = Explosion(player.rect.center,'pequena')
             all_sprites.add(expl)
-            print(contador)
             if contador == 0:
                 running = False
             contador -= 1
@@ -624,7 +707,24 @@ while running:
         if cooldown == 0:
             expl = Explosion(player.rect.center,'pequena')
             all_sprites.add(expl)
-            print(contador)
+
+            if contador == 0:
+                death_explosion = Explosion(player.rect.center, 'player')
+                all_sprites.add(death_explosion)
+                player.kill()
+
+            # if the player died and the explosion has finished playing
+            if contador == 0 and not death_explosion.alive():
+                running = False
+            contador -= 1
+            cooldown = 60
+
+    hits = pygame.sprite.spritecollide(player, inimigos, True)
+    if hits:
+        if cooldown == 0:
+            expl = Explosion(player.rect.center,'pequena')
+            all_sprites.add(expl)
+
             if contador == 0:
                 death_explosion = Explosion(player.rect.center, 'player')
                 all_sprites.add(death_explosion)
@@ -652,22 +752,24 @@ while running:
     for hit in hits:
         pontos += 10
         lifeboss += 1
-        print(lifeboss)
-        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.10 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.35:
+
+        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.25 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.35:
             random.choice(expl_sounds).play()
             expl = Explosion(hit.rect.center, 'pequena')
             all_sprites.add(expl)
-            bosses.sprites()[0].image = pygame.transform.scale(boss1_img, (150, 150))
-            bosses.sprites()[0].image.set_colorkey(BLACK)
+            if Settings.currentlevel == 4:
+                bosses.sprites()[0].image = pygame.transform.scale(boss1_img, (150, 150))
+                bosses.sprites()[0].image.set_colorkey(BLACK)
 
 
-        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.20 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80 :
+        if lifeboss >= Settings.total_vida_boss[Settings.currentlevel]*0.75 and lifeboss <= Settings.total_vida_boss[Settings.currentlevel]*0.80 :
 
             random.choice(expl_sounds).play()
             expl = Explosion(hit.rect.center, 'grande')
             all_sprites.add(expl)
-            bosses.sprites()[0].image = pygame.transform.scale(boss2_img, (150, 150))
-            bosses.sprites()[0].image.set_colorkey(BLACK)
+            if Settings.currentlevel == 4:
+                bosses.sprites()[0].image = pygame.transform.scale(boss1_img, (150, 150))
+                bosses.sprites()[0].image.set_colorkey(BLACK)
 
 
         if lifeboss == Settings.total_vida_boss[Settings.currentlevel]:

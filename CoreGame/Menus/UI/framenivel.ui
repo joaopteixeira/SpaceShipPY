@@ -109,28 +109,6 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>270</y>
-     <width>591</width>
-     <height>101</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Yu Gothic UI Semilight</family>
-     <pointsize>40</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>BLOQUEADO</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QPushButton" name="bt_right_2">
    <property name="geometry">
     <rect>
@@ -160,6 +138,28 @@
    </property>
    <property name="default">
     <bool>false</bool>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="label">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>200</y>
+     <width>561</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Yu Gothic UI Semilight</family>
+     <pointsize>40</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Bloqueado</string>
    </property>
    <property name="flat">
     <bool>true</bool>
