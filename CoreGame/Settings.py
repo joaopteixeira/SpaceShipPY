@@ -26,11 +26,10 @@ vidas = 100 #Vida do player
 
 
 
-<<<<<<< HEAD
+
 currentlevel = 0           #qual o nivel selecionado 5 é o endless, 6 o creditos
-=======
-currentlevel = 6          #qual o nivel selecionado 5 é o endless, 6 o creditos
->>>>>>> bc11c511a64d30e17ba087309d941e873d5a244e
+
+
 
 
 
