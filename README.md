@@ -1,5 +1,3 @@
 # SpaceShipPY
-Shoot'em'up old School Space Fighting Game
+Shoot'em'up old School Space  Game
  
- 
- ########Baixar o som do Player Laser no audicty
