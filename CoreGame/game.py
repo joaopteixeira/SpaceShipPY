@@ -669,6 +669,7 @@ while running:
             bosses.sprites()[0].image = pygame.transform.scale(boss2_img, (150, 150))
             bosses.sprites()[0].image.set_colorkey(BLACK)
 
+
         if lifeboss == Settings.total_vida_boss[Settings.currentlevel]:
 
             death_explosion = Explosion(hit.rect.center, 'player')
