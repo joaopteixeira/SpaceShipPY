@@ -22,12 +22,12 @@ NAVESCOLHIDA = 0
 LEVELUNLOCKED = [0,1,2,3,4]
 
 
-vidas = 100 #Vida do player
+vidas = 6 #Vida do player
 
 
 
 
-currentlevel = 0           #qual o nivel selecionado 5 é o endless, 6 o creditos
+currentlevel = 4           #qual o nivel selecionado 5 é o endless, 6 o creditos
 
 
 
@@ -36,7 +36,7 @@ currentlevel = 0           #qual o nivel selecionado 5 é o endless, 6 o credito
 backimg = ["space1.jpg", "space2.jpg", "space3.jpg", "space4.jpg","space5.jpg","endless.png","creditsimg.jpg"]      #Imagem do background
 
 
-ostlist = ['SpaceTheme1.mp3', 'SpaceTheme2.mp3', 'SpaceTheme3.mp3', 'SpaceTheme4.mp3',"spaceTheme4.mp3",'SpaceTheme1.mp3','credits.mp3']  #Banda Sonoro
+ostlist = ['SpaceTheme1.mp3', 'SpaceTheme2.mp3', 'SpaceTheme3.mp3', 'SpaceTheme4.mp3',"shootingdario.mp3",'SpaceTheme1.mp3','credits.mp3']  #Banda Sonoro
 
 quantidade_inimigos = [1,3,6,8,8,6,1]
 

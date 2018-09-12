@@ -22,7 +22,7 @@ BLUE = (0, 0, 255)
 pygame.init()
 pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Ivansions from OtherWorld")
+pygame.display.set_caption("SpaceShipPy")
 clock = pygame.time.Clock()
 
 
@@ -44,7 +44,7 @@ if Settings.currentlevel == 5:
     meteor_list1 =['b1.png','b2.png','b3.png','b4.png','b1.png','b2.png','b3.png']
 
 if Settings.currentlevel == 6:
-    meteor_list1 =['Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png']
+    meteor_list1 =['Creditos1.png','Creditos2.png','Creditos3.png','Creditos4.png','Creditos5.png','Creditos4.png','Creditos3.png','Creditos2.png']
 
 
 if Settings.currentlevel == 6:
@@ -63,7 +63,17 @@ tiroIni_img = pygame.image.load(("Laser.png")).convert()
 img_dir = ((__file__), "laser2.png")
 tiro_img = pygame.image.load(("laser2.png")).convert()
 
-mob_img = pygame.image.load((meteor_list1[random.randrange(0,5)])).convert()
+if Settings.currentlevel > 6:
+    mob_img = pygame.image.load((meteor_list1[random.randrange(0,5)])).convert()
+
+if Settings.currentlevel == 6:
+
+    mob_img = pygame.image.load((meteor_list1[random.randrange(0,6)]))
+
+
+
+
+
 
 background = pygame.image.load(Settings.backimg[Settings.currentlevel])
 
@@ -269,7 +279,7 @@ class Mob(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((30, 40))
-        self.image = mob_img
+        self.image = pygame.image.load((meteor_list1[random.randrange(0,6)]))
         self.rect = self.image.get_rect()
         self.radius = int(self.rect.width * .85 / 2)
         self.image.set_colorkey(BLACK)
@@ -528,7 +538,8 @@ def newboss():
 mobs = pygame.sprite.Group()
 inimigos = pygame.sprite.Group()
 bosses = pygame.sprite.Group()
-player = Player()
+if Settings.currentlevel < 6:
+    player = Player()
 
 
 all_sprites = pygame.sprite.Group()
@@ -536,10 +547,11 @@ bullets = pygame.sprite.Group()
 bulletsIni = pygame.sprite.Group()
 powerups = pygame.sprite.Group()
 lasers = pygame.sprite.Group()
-all_sprites.add(player)
+
+if Settings.currentlevel < 6:
+    all_sprites.add(player)
+
 shieldpowerups = pygame.sprite.Group()
-
-
 
 
 
@@ -557,6 +569,8 @@ lifeboss = 0
 cooldown = 0
 running = True
 while running:
+
+
     i+=1
     tempinho+=1
     #if game_over:
@@ -662,6 +676,16 @@ while running:
     if tempinho == 8200:
         newboss()
 
+    if tempinho == 3000 and Settings.currentlevel == 4:
+        newboss()
+
+    if tempinho == 82 and Settings.currentlevel == 6:
+        newboss()
+
+    if tempinho == 4082 and Settings.currentlevel == 6:
+        running = False
+
+
     # Update
     all_sprites.update()
 
@@ -687,54 +711,54 @@ while running:
             all_sprites.add(sh)
             shieldpowerups.add(sh)
 
+    if Settings.currentlevel < 6:
+        hits = pygame.sprite.spritecollide(player, bulletsIni, True)
+        if cooldown != 0:
+         cooldown-=1
 
-    hits = pygame.sprite.spritecollide(player, bulletsIni, True)
-    if cooldown != 0:
-        cooldown-=1
+        if hits:
+            if cooldown == 0:
+                expl = Explosion(player.rect.center,'pequena')
+                all_sprites.add(expl)
+                if contador == 0:
+                    running = False
+                contador -= 1
+                cooldown = 120
 
-    if hits:
-        if cooldown == 0:
-            expl = Explosion(player.rect.center,'pequena')
-            all_sprites.add(expl)
-            if contador == 0:
-                running = False
-            contador -= 1
-            cooldown = 120
+    if Settings.currentlevel < 6:
+        hits = pygame.sprite.spritecollide(player, mobs, True)
+        if hits:
+            if cooldown == 0:
+                expl = Explosion(player.rect.center,'pequena')
+                all_sprites.add(expl)
 
-
-    hits = pygame.sprite.spritecollide(player, mobs, True)
-    if hits:
-        if cooldown == 0:
-            expl = Explosion(player.rect.center,'pequena')
-            all_sprites.add(expl)
-
-            if contador == 0:
-                death_explosion = Explosion(player.rect.center, 'player')
-                all_sprites.add(death_explosion)
-                player.kill()
-
-            # if the player died and the explosion has finished playing
-            if contador == 0 and not death_explosion.alive():
-                running = False
-            contador -= 1
-            cooldown = 60
-
-    hits = pygame.sprite.spritecollide(player, inimigos, True)
-    if hits:
-        if cooldown == 0:
-            expl = Explosion(player.rect.center,'pequena')
-            all_sprites.add(expl)
-
-            if contador == 0:
-                death_explosion = Explosion(player.rect.center, 'player')
-                all_sprites.add(death_explosion)
-                player.kill()
+                if contador == 0:
+                    death_explosion = Explosion(player.rect.center, 'player')
+                    all_sprites.add(death_explosion)
+                    player.kill()
 
             # if the player died and the explosion has finished playing
             if contador == 0 and not death_explosion.alive():
                 running = False
             contador -= 1
             cooldown = 60
+    if Settings.currentlevel < 6:
+        hits = pygame.sprite.spritecollide(player, inimigos, True)
+        if hits:
+            if cooldown == 0:
+                expl = Explosion(player.rect.center,'pequena')
+                all_sprites.add(expl)
+
+                if contador == 0:
+                    death_explosion = Explosion(player.rect.center, 'player')
+                    all_sprites.add(death_explosion)
+                    player.kill()
+
+            # if the player died and the explosion has finished playing
+                if contador == 0 and not death_explosion.alive():
+                    running = False
+                contador -= 1
+                cooldown = 60
 
 
     hits = pygame.sprite.groupcollide(inimigos, bullets, True, True)
@@ -780,17 +804,19 @@ while running:
             all_sprites.add(death_explosion)
             all_sprites.remove(bosses)
 
+            running = False
+
 
     hits = pygame.sprite.groupcollide(mobs, lasers, True, False)
 
+    if Settings.currentlevel < 6:
+        hits = pygame.sprite.spritecollide(player, powerups, True)
+        if hits:
+            pup +=1
 
-    hits = pygame.sprite.spritecollide(player, powerups, True)
-    if hits:
-        pup +=1
-
-    hits = pygame.sprite.spritecollide(player, shieldpowerups, True)
-    if hits:
-        contador +=1
+        hits = pygame.sprite.spritecollide(player, shieldpowerups, True)
+        if hits:
+            contador +=1
 
 
 
@@ -801,8 +827,9 @@ while running:
     screen.blit(background, background_rect)
     all_sprites.draw(screen)
 
-    draw_text(screen, str(pontos), 20, WIDTH / 2, 10)
-    draw_shield_bar(screen, 5, 5, contador)
+    if Settings.currentlevel < 6:
+        draw_text(screen, str(pontos), 20, WIDTH / 2, 10)
+        draw_shield_bar(screen, 5, 5, contador)
     # *after* drawing everything, flip the display
     pygame.display.flip()
 
