@@ -22,23 +22,34 @@ NAVESCOLHIDA = 0
 LEVELUNLOCKED = [0,1,2,3,4]
 
 
+<<<<<<< HEAD
 vidas = 1 #Vida do player
 
 
 
 currentlevel = 3          #qual o nivel selecionado 5 é o endless, 6 o creditos
+=======
+vidas = 6 #Vida do player
 
 
 
-backimg = ["space1.jpg", "space2.jpg", "space3.jpg", "space4.jpg","space5.jpg","endless.png","creditsimg.jpg"]      #Imagem do background
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
+
+currentlevel = 0  #qual o nivel selecionado 5 é o endless, 6 o creditos
 
 
-ostlist = ['SpaceTheme1.mp3', 'SpaceTheme2.mp3', 'SpaceTheme3.mp3', 'SpaceTheme4.mp3',"spaceTheme4.mp3",'SpaceTheme1.mp3','credits.mp3']  #Banda Sonoro
+
+
+
+backimg = ["space1.jpg", "espa2.jpg", "space3.jpg", "space4.jpg","space5.jpg","endless.png","creditsimg.jpg"]      #Imagem do background
+
+
+ostlist = ['SpaceTheme1.mp3', 'SpaceTheme2.mp3', 'SpaceTheme3.mp3', 'SpaceTheme4.mp3',"shootingdario.mp3",'SpaceTheme1.mp3','credits.mp3']  #Banda Sonoro
 
 quantidade_inimigos = [1,3,6,8,8,6,1]
 
 
-inimigoslist = ['RD1.png', "ini2.png","black2.png",'nave7.png','tabaco.png',"RD2.png",['Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png']]    #
+inimigoslist = [ "black2.png",'nave7.png','RD1.png',"n.png",'tabaco.png',"RD2.png",['Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png','Creditos1.png']]    #
 
 bosslist = ['boss1.png','boss2.png','boss3.png','boss4.png','dario.png','dario.png',"fim.png"]
 

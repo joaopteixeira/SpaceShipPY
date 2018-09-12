@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="f7f1ef0e-bce6-4407-8a0e-f9c1ae8ac7cc" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/SpaceShipPY.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SpaceShipPY.iml" afterDir="false" />
@@ -10,11 +11,24 @@
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
+=======
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/CoreGame/Settings.py" line="41" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b0a73add-d1af-4b4f-8a04-ab211849c719" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoreGame/Settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/CoreGame/Settings.py" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/venv/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
@@ -31,38 +45,120 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
               <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+=======
+  <component name="FUSProjectUsageTrigger">
+    <session id="1627589115">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.16" value="1" />
+          <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.35" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.63" value="1" />
+          <entry key="project.opened" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="jpg" value="17" />
+          <entry key="png" value="22" />
+          <entry key="py" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Image" value="39" />
+          <entry key="Python" value="12" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="1255" />
+          <entry key="txt" value="32" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="32" />
+          <entry key="Python" value="1255" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CoreGame/Settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="43" column="60" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CoreGame/Settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CoreGame/game.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2232">
+              <caret line="806" column="27" selection-start-line="806" selection-start-column="27" selection-end-line="806" selection-end-column="27" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+<<<<<<< HEAD
   <component name="Git.Settings">
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Setup Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/CoreGame/game.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/CoreGame/HandlerMainMenu.py" />
+=======
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
         <option value="$PROJECT_DIR$/CoreGame/Settings.py" />
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="260" />
     <option name="y" value="20" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
+=======
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -74,6 +170,7 @@
         <subPane>
           <expand>
             <path>
+<<<<<<< HEAD
               <item name="SpaceShipPY" type="b2602c69:ProjectViewProjectNode" />
               <item name="SpaceShipPY" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -87,6 +184,15 @@
               <item name="SpaceShipPY" type="462c0819:PsiDirectoryNode" />
               <item name="CoreGame" type="462c0819:PsiDirectoryNode" />
               <item name="Menus" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="SpaceShip Brench Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpaceShip Brench Backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpaceShip Brench Backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpaceShip Brench Backend" type="462c0819:PsiDirectoryNode" />
+              <item name="CoreGame" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
             </path>
           </expand>
           <select />
@@ -95,9 +201,23 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
+=======
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\SaraS\Desktop\SpaceShip Brench Backend\CoreGame\Sounds" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\SaraS\Desktop\SpaceShip Brench Backend\CoreGame" />
+      <recent name="C:\Users\SaraS\Desktop\SpaceShip Brench Backend\CoreGame\Sounds" />
+    </key>
+  </component>
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -111,16 +231,26 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.game">
+<<<<<<< HEAD
     <configuration name="HandlerMainMenu" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+    <configuration name="HandlerMainMenu" type="PythonConfigurationType" factoryName="Python">
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
       <module name="SpaceShipPY" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+<<<<<<< HEAD
       <option name="SDK_HOME" value="C:\Users\SaraS\Desktop\SpaceShipPY\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CoreGame" />
       <option name="IS_MODULE_SDK" value="true" />
+=======
+      <option name="SDK_HOME" value="C:\Users\SaraS\Google Drive\Pynthons\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CoreGame" />
+      <option name="IS_MODULE_SDK" value="false" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CoreGame/HandlerMainMenu.py" />
@@ -128,14 +258,23 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+<<<<<<< HEAD
     </configuration>
     <configuration name="MainMenu" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unnamed" type="PythonConfigurationType" factoryName="Python">
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
       <module name="SpaceShipPY" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+<<<<<<< HEAD
       <option name="SDK_HOME" value="C:\Users\SaraS\Desktop\SpaceShipPY\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CoreGame/Menus" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -157,6 +296,11 @@
       <option name="SDK_HOME" value="C:\Users\SaraS\Desktop\SpaceShipPY\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
+=======
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="" />
@@ -164,17 +308,31 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+<<<<<<< HEAD
     </configuration>
     <configuration name="game" type="PythonConfigurationType" factoryName="Python" temporary="true">
+=======
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="game" type="PythonConfigurationType" factoryName="Python">
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
       <module name="SpaceShipPY" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+<<<<<<< HEAD
       <option name="SDK_HOME" value="C:\Users\SaraS\Desktop\SpaceShipPY\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CoreGame" />
       <option name="IS_MODULE_SDK" value="true" />
+=======
+      <option name="SDK_HOME" value="C:\Users\SaraS\PycharmProjects\gamepy\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CoreGame" />
+      <option name="IS_MODULE_SDK" value="false" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CoreGame/game.py" />
@@ -182,6 +340,7 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
+<<<<<<< HEAD
     </configuration>
     <list>
       <item itemvalue="Python.game" />
@@ -195,12 +354,24 @@
         <item itemvalue="Python.MainMenu" />
       </list>
     </recent_temporary>
+=======
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.Unnamed" />
+      <item itemvalue="Python.game" />
+      <item itemvalue="Python.HandlerMainMenu" />
+    </list>
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="f7f1ef0e-bce6-4407-8a0e-f9c1ae8ac7cc" name="Default" comment="" />
       <created>1536689590062</created>
       <option name="number" value="Default" />
@@ -229,15 +400,131 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="4" />
+=======
+      <changelist id="b0a73add-d1af-4b4f-8a04-ab211849c719" name="Default Changelist" comment="" />
+      <created>1532970904641</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1532970904641</updated>
+    </task>
+    <task id="LOCAL-00001" summary="BackEnd 1º OST">
+      <created>1533249987911</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1533249987911</updated>
+    </task>
+    <task id="LOCAL-00002" summary="v5">
+      <created>1535581282740</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1535581282740</updated>
+    </task>
+    <task id="LOCAL-00003" summary="v1.0">
+      <created>1535620778993</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1535620778993</updated>
+    </task>
+    <task id="LOCAL-00004" summary="v1.1">
+      <created>1535620869250</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1535620869250</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;CoreGame/Settings.py&#10;#&#9;CoreGame/asd.jpg&#10;#&#9;CoreGame/boss1.png&#10;#&#9;CoreGame/boss2.png&#10;#&#9;CoreGame/fsdfsd.jpg&#10;#&#9;CoreGame/game.py&#10;#&#9;CoreGame/naves34.jpg&#10;#&#9;CoreGame/player1.png">
+      <created>1535646486603</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1535646486603</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;CoreGame/Settings.py&#10;#&#9;CoreGame/asd.jpg&#10;#&#9;CoreGame/boss1.png&#10;#&#9;CoreGame/boss2.png&#10;#&#9;CoreGame/fsdfsd.jpg&#10;#&#9;CoreGame/game.py&#10;#&#9;CoreGame/naves34.jpg&#10;#&#9;CoreGame/player1.png">
+      <created>1535647171836</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1535647171836</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1535647527241</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1535647527241</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1535647728969</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1535647728969</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1536708996415</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1536708996415</updated>
+    </task>
+    <task id="LOCAL-00010" summary="nv">
+      <created>1536716370651</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1536716370651</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22008547" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49679488" visible="true" weight="0.23220153" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49947312" weight="0.39804772" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49947312" weight="0.14859003" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5032051" side_tool="true" visible="true" weight="0.23220153" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.12753278" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="BackEnd 1º OST" />
+    <MESSAGE value="v5" />
+    <MESSAGE value="v1.0" />
+    <MESSAGE value="v1.1" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;CoreGame/Settings.py&#10;#&#9;CoreGame/asd.jpg&#10;#&#9;CoreGame/boss1.png&#10;#&#9;CoreGame/boss2.png&#10;#&#9;CoreGame/fsdfsd.jpg&#10;#&#9;CoreGame/game.py&#10;#&#9;CoreGame/naves34.jpg&#10;#&#9;CoreGame/player1.png" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
+    <MESSAGE value="nv" />
+    <option name="LAST_COMMIT_MESSAGE" value="nv" />
+  </component>
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/CoreGame/game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -249,13 +536,103 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+=======
+    <entry file="file://$PROJECT_DIR$/CoreGame/Menus/MainMenu.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/HandlerMainMenu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="26" column="27" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/nave7.jpg" />
+    <entry file="file://$PROJECT_DIR$/CoreGame/nave13.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/navicon.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/RD1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/RD2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/boss1.jpg" />
+    <entry file="file://$PROJECT_DIR$/CoreGame/boss3.jpg" />
+    <entry file="file://$PROJECT_DIR$/CoreGame/boss2.jpg" />
+    <entry file="file://$PROJECT_DIR$/CoreGame/nave11.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/nave2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/movie.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/nave18.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/nave16.png" />
+    <entry file="file://$PROJECT_DIR$/CoreGame/nave19.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/nave20.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/nave7.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="189" selection-start-line="189" selection-end-line="189" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/boss4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/boss1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/boss2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/player1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/price.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/player2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/player3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/space1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CoreGame/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2232">
+          <caret line="806" column="27" selection-start-line="806" selection-start-column="27" selection-end-line="806" selection-end-column="27" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CoreGame/Settings.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="289">
           <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+=======
+        <state relative-caret-position="432">
+          <caret line="43" column="60" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
+>>>>>>> 061399e9d1d51ce57635a5363126113df582d693
         </state>
       </provider>
     </entry>
