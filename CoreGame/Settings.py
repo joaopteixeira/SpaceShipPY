@@ -22,18 +22,10 @@ NAVESCOLHIDA = 0
 LEVELUNLOCKED = [0,1,2,3,4]
 
 
-<<<<<<< HEAD
-vidas = 1 #Vida do player
+vidas = 7 #Vida do player
 
 
 
-currentlevel = 3          #qual o nivel selecionado 5 é o endless, 6 o creditos
-=======
-vidas = 6 #Vida do player
-
-
-
->>>>>>> 061399e9d1d51ce57635a5363126113df582d693
 
 currentlevel = 0  #qual o nivel selecionado 5 é o endless, 6 o creditos
 
@@ -68,7 +60,8 @@ POWERUPUNLOCKED = []
 POWERUPSELECTED = 0
 
 frequencia_tiros_inimigos = [20,20,10,5,10,10,100000]
-# -----------------------
+
+
 
 total_vida_boss = [55.00,70.00,80.00,100.00,200.00,100.00,200.00]
 navlistMINI = ["player1-mini.png", "player2-mini.png", "player3-mini.png"]
@@ -77,4 +70,3 @@ bosslistMINI = ['boss1-mini.png','boss2-mini.png','boss3-mini.png','boss4-mini.p
 
 prob_de_dropar_shield = 5
 
-########################################
