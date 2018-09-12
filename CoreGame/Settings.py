@@ -22,12 +22,12 @@ NAVESCOLHIDA = 0
 LEVELUNLOCKED = [0,1,2,3,4]
 
 
-vidas = 7 #Vida do player
+vidas = 1 #Vida do player
 
 
 
 
-currentlevel = 0  #qual o nivel selecionado 5 é o endless, 6 o creditos
+currentlevel = 3  #qual o nivel selecionado 5 é o endless, 6 o creditos
 
 
 

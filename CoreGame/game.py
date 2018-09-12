@@ -567,6 +567,7 @@ contador = Settings.vidas
 bs = 0
 lifeboss = 0
 cooldown = 0
+vitoria = False
 running = True
 while running:
 
@@ -736,10 +737,7 @@ while running:
                     death_explosion = Explosion(player.rect.center, 'player')
                     all_sprites.add(death_explosion)
                     player.kill()
-
-            # if the player died and the explosion has finished playing
-            if contador == 0 and not death_explosion.alive():
-                running = False
+                    running = False
             contador -= 1
             cooldown = 60
     if Settings.currentlevel < 6:
@@ -753,10 +751,9 @@ while running:
                     death_explosion = Explosion(player.rect.center, 'player')
                     all_sprites.add(death_explosion)
                     player.kill()
-
-            # if the player died and the explosion has finished playing
-                if contador == 0 and not death_explosion.alive():
                     running = False
+
+
                 contador -= 1
                 cooldown = 60
 
@@ -803,8 +800,8 @@ while running:
             random.choice(expl_sounds).play()
             all_sprites.add(death_explosion)
             all_sprites.remove(bosses)
-
             running = False
+            vitoria = True
 
 
     hits = pygame.sprite.groupcollide(mobs, lasers, True, False)
@@ -833,4 +830,10 @@ while running:
     # *after* drawing everything, flip the display
     pygame.display.flip()
 
+if Settings.currentlevel == 4 & vitoria == True:
+        Settings.currentlevel == 6
+        running = True
+
+
+time.sleep(1)
 pygame.quit() 
