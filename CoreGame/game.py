@@ -3,7 +3,7 @@ from _ast import Set
 import pygame
 import random
 
-from CoreGame import Settings
+import Settings
 
 WIDTH = Settings.WITDH    # Largura
 HEIGHT = Settings.HEIGHT  # ALTURA
