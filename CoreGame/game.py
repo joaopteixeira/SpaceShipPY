@@ -536,8 +536,9 @@ def newboss():
     bosses.add(bos)
 
 
-def crash():
-    draw_text(screen, str("VITORIA"), 120, WIDTH / 2, HEIGHT/2)
+def crash(frase):
+
+    draw_text(screen, str(frase), 120, WIDTH / 2, HEIGHT/2)
     i=0
     while True:
         i+=1
@@ -549,7 +550,7 @@ def crash():
 
         # gameDisplay.fill(white)
 
-        if i==100:
+        if i==50:
             pygame.quit()
 
 
@@ -588,10 +589,13 @@ i=0
 pup = 1
 contador = Settings.vidas
 bs = 0
+fim=0
 lifeboss = 0
 cooldown = 0
 vitoria = False
 running = True
+boleano = False
+frase = "jogo"
 while running:
 
 
@@ -622,7 +626,7 @@ while running:
 #PROGRESSAO DE INIMIGOS E NO FIM ENDBOSS
 
     if tempinho == 300:
-        crash()
+
         for j in range(1):
 
             newinim()
@@ -726,6 +730,7 @@ while running:
 
     # check to see if a bullet hit a mob
     hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
+
     for hit in hits:
         pontos += 100 - hit.radius
         random.choice(expl_sounds).play()
@@ -738,18 +743,31 @@ while running:
             shieldpowerups.add(sh)
 
     if Settings.currentlevel < 6:
+
         hits = pygame.sprite.spritecollide(player, bulletsIni, True)
-        if cooldown != 0:
-         cooldown-=1
 
         if hits:
             if cooldown == 0:
                 expl = Explosion(player.rect.center,'pequena')
                 all_sprites.add(expl)
-                if contador == 0:
-                    running = False
-                contador -= 1
-                cooldown = 120
+                contador -=1
+
+            if contador == 0:
+                death_explosion = Explosion(player.rect.center, 'player')
+                all_sprites.add(death_explosion)
+                player.kill()
+                boleano = True
+                frase = "Game Over! Fraquinho"
+
+
+
+
+
+            if contador == -1:
+                running = False
+
+
+            cooldown = 60
 
     if Settings.currentlevel < 6:
         hits = pygame.sprite.spritecollide(player, mobs, True)
@@ -757,31 +775,41 @@ while running:
             if cooldown == 0:
                 expl = Explosion(player.rect.center,'pequena')
                 all_sprites.add(expl)
+            if contador == 0:
+                death_explosion = Explosion(player.rect.center, 'player')
+                all_sprites.add(death_explosion)
+                player.kill()
+                boleano = True
+                frase = "Game Over! Ceguinho!"
 
-                if contador == 0:
-                    death_explosion = Explosion(player.rect.center, 'player')
-                    all_sprites.add(death_explosion)
-                    player.kill()
-                    running = False
+
             contador -= 1
             cooldown = 60
+            
     if Settings.currentlevel < 6:
+
+
         hits = pygame.sprite.spritecollide(player, inimigos, True)
         if hits:
             if cooldown == 0:
                 expl = Explosion(player.rect.center,'pequena')
                 all_sprites.add(expl)
+                contador -= 1
+                cooldown = 60
 
                 if contador == 0:
                     death_explosion = Explosion(player.rect.center, 'player')
                     all_sprites.add(death_explosion)
                     player.kill()
-                    running = False
+                    boleano = True
+                    frase = "Game Over! Tótó!"
 
 
-                contador -= 1
-                cooldown = 60
-
+    if boleano:
+        fim+=1
+        if fim == 70:
+            running = False
+            crash(frase)
 
     hits = pygame.sprite.groupcollide(inimigos, bullets, True, True)
     for hit in hits:
@@ -826,7 +854,8 @@ while running:
             all_sprites.add(death_explosion)
             all_sprites.remove(bosses)
             vitoria = True
-            running = False
+            boleano = True
+            frase = "Ganhou!! Parabens"
 
 
 
