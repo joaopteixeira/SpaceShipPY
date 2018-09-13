@@ -1,7 +1,7 @@
 
 navlist = ["player1.png", "player2.png", "player3.png"]
 
-NAVUNLOCKED = [0]
+NAVUNLOCKED = [0,1,2]
 
 NAVIMG = "player1.png"
 
@@ -22,16 +22,15 @@ NAVESCOLHIDA = 0
 LEVELUNLOCKED = [0,1,2,3,4]
 
 
-vidas = 100   #Vida do player
+vidas = 10 #Vida do player
 
 
 
 
 currentlevel = 4  #qual o nivel selecionado 5 é o endless, 6 o creditos
 
-velocidade = 8
 
-disparo = 10
+
 
 
 backimg = ["space1.jpg", "espa2.jpg", "space3.jpg", "space4.jpg","space5.jpg","endless.png","creditsimg.jpg"]      #Imagem do background
@@ -56,7 +55,7 @@ BOSSESCOLHIDO = 0
 #PowerUp definicoes
 poweruplist = ['pu1.png','pu2.png','pu3.png','pu4.png','pu5.png','pu6.png']
 
-POWERUPUNLOCKED = []
+POWERUPUNLOCKED = [[],[],[]]
 
 POWERUPSELECTED = 0
 
@@ -70,4 +69,8 @@ bosslistMINI = ['boss1-mini.png','boss2-mini.png','boss3-mini.png','boss4-mini.p
 
 
 prob_de_dropar_shield = 5
+
+velocidade = 5
+
+disparo = 7
 
