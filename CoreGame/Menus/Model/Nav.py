@@ -16,7 +16,7 @@ class NAV():
         self.preco = preco
 
     def getvelocidade(self):
-        return self.preco
+        return self.velocidade
 
     def setvelocidade(self, velocidade):
         self.velocidade = velocidade
