@@ -162,17 +162,32 @@ class StoreGui(Ui_Frame):
                     self.coins.setText(str(Settings.COINS))
             elif str(self.bt_unlock.text()) == ('Selecionar'):
                 Settings.NAVESCOLHIDA = Settings.NAVSELECTED
+                print(str(Settings.NAVESCOLHIDA))
                 self.bt_unlock.setStyleSheet("QPushButton{background-image:url('check.png');color:#2b5259;background-color:transparent;padding-top:120px;background-position: center; background-repeat:no-repeat;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
                 self.bt_unlock.setText("Selecionado")
                 self.navbaixo.setStyleSheet("QPushButton{background-image:url("+Settings.navlistMINI[
                 Settings.NAVESCOLHIDA]+");color:#2b5259;background-color:transparent;padding-top:110px;background-position: center; background-repeat:no-repeat;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
 
         elif self.menu == 1:
-            if int(Settings.COINS) >= 100:
-                Settings.POWERUPUNLOCKED.append(Settings.POWERUPSELECTED)
+            if int(Settings.COINS) >= self.pwups.getpw()[Settings.POWERUPSELECTED].getpreco():
+                Settings.POWERUPUNLOCKED[Settings.NAVSELECTED].append(Settings.POWERUPSELECTED)
                 self.bt_unlock.setVisible(False)
-                Settings.COINS -= 100
+                Settings.COINS -= self.pwups.getpw()[Settings.POWERUPSELECTED].getpreco()
+
                 self.coins.setText(str(Settings.COINS))
+
+                if self.pwups.getpw()[Settings.POWERUPSELECTED].gettipo() == 0:
+                    self.navs.getnavs()[Settings.NAVSELECTED].setvida(self.navs.getnavs()[Settings.NAVSELECTED].getvida()+self.pwups.getpw()[Settings.POWERUPSELECTED].getvalor())
+                    self.lb_vida.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvida()))
+
+                elif self.pwups.getpw()[Settings.POWERUPSELECTED].gettipo() == 1:
+                    self.navs.getnavs()[Settings.NAVSELECTED].setvelocidade(self.navs.getnavs()[Settings.NAVSELECTED].getvelocidade()+self.pwups.getpw()[Settings.POWERUPSELECTED].getvalor())
+                    self.lb_velocity.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getvelocidade()))
+                elif self.pwups.getpw()[Settings.POWERUPSELECTED].gettipo() == 2:
+                    self.navs.getnavs()[Settings.NAVSELECTED].setdisparo(self.navs.getnavs()[Settings.NAVSELECTED].getdisparo()+self.pwups.getpw()[Settings.POWERUPSELECTED].getvalor())
+                    self.lb_disparo.setText(str(self.navs.getnavs()[Settings.NAVSELECTED].getdisparo()))
+
+
                 #self.navs.getnavs()[Settings.NAVSELECTED].set
 
 
@@ -214,7 +229,7 @@ class StoreGui(Ui_Frame):
                 self.bt_unlock.setStyleSheet(
                     "QPushButton{background-image:url('lock.png');color:transparent;background-color:transparent;padding-top:120px;background-position: center; background-repeat:no-repeat;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
                 self.bt_unlock.setText("Desbloquear")
-            for u in Settings.POWERUPUNLOCKED:
+            for u in Settings.POWERUPUNLOCKED[Settings.NAVSELECTED]:
                 if u == Settings.POWERUPSELECTED:
                     self.bt_unlock.setVisible(False)
 
@@ -278,7 +293,7 @@ class StoreGui(Ui_Frame):
                 self.bt_unlock.setStyleSheet(
                     "QPushButton{background-image:url('lock.png');color:transparent;background-color:transparent;padding-top:120px;background-position: center; background-repeat:no-repeat;margin: 1px;border-style: outset;}QPushButton:hover{background-color:white;color:#2b5259;};")
                 self.bt_unlock.setText("Desbloquear")
-            for u in Settings.POWERUPUNLOCKED:
+            for u in Settings.POWERUPUNLOCKED[Settings.NAVSELECTED]:
                 if u == Settings.POWERUPSELECTED:
                     self.bt_unlock.setVisible(False)
 
