@@ -15,6 +15,6 @@ class ServNav():
 
 
     def mockupdata(self):
-        self.addnav(250,10,10,10)
-        self.addnav(450, 20, 20, 20)
-        self.addnav(750, 30, 30, 30)
+        self.addnav(0,30,80,1000)
+        self.addnav(2000, 50, 130, 600)
+        self.addnav(4000, 40, 180, 800)

@@ -14,12 +14,12 @@ class ServPowerUp():
 
 
     def mockupdata(self):
-        self.addpw('lifeimg.png',5,0,100)
-        self.addpw('lifeimg.png', 10, 0,200)
-        self.addpw('lifeimg.png', 15, 0,300)
-        self.addpw('velimg.png', 5, 1,100)
-        self.addpw('velimg.png', 10, 1,200)
-        self.addpw('velimg.png', 15, 1,300)
-        self.addpw('shootimg.png', 5, 2,100)
-        self.addpw('shootimg.png', 10, 2,200)
-        self.addpw('shootimg.png', 15, 2,300)
+        self.addpw('lifeimg.png',100,0,1000) #dividir a vida por 100
+        self.addpw('lifeimg.png', 200, 0,2000)
+        self.addpw('lifeimg.png', 300, 0,3000)
+        self.addpw('velimg.png', 5, 1,1000) #dividir a vida por 10
+        self.addpw('velimg.png', 10, 1,2000)
+        self.addpw('velimg.png', 20, 1,3000)
+        self.addpw('shootimg.png', 20, 2,1000)  #dividir por 10
+        self.addpw('shootimg.png', 40, 2,2000)
+        self.addpw('shootimg.png', 60, 2,3000)
