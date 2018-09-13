@@ -22,15 +22,16 @@ NAVESCOLHIDA = 0
 LEVELUNLOCKED = [0,1,2,3,4]
 
 
-vidas = 1 #Vida do player
+vidas = 100   #Vida do player
 
 
 
 
-currentlevel = 3  #qual o nivel selecionado 5 é o endless, 6 o creditos
+currentlevel = 4  #qual o nivel selecionado 5 é o endless, 6 o creditos
 
+velocidade = 8
 
-
+disparo = 10
 
 
 backimg = ["space1.jpg", "espa2.jpg", "space3.jpg", "space4.jpg","space5.jpg","endless.png","creditsimg.jpg"]      #Imagem do background

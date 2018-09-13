@@ -2,8 +2,8 @@ from _ast import Set
 
 import pygame
 import random
-
-import Settings
+from CoreGame import *
+from CoreGame import Settings
 
 WIDTH = Settings.WITDH    # Largura
 HEIGHT = Settings.HEIGHT  # ALTURA
@@ -154,7 +154,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.bottom = y
         self.rect.centerx = x
-        self.speedy = -10
+        self.speedy = -Settings.disparo
         self.direc = d
 
     def update(self):
@@ -215,16 +215,16 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0
         keystate = pygame.key.get_pressed()
         if keystate[pygame.K_LEFT]:
-            self.speedx = -5
+            self.speedx = -Settings.velocidade
         if keystate[pygame.K_RIGHT]:
-            self.speedx = 5
+            self.speedx = Settings.velocidade
         self.rect.x += self.speedx
 
         self.speedy = 0
         if keystate[pygame.K_UP]:
-            self.speedy = -5
+            self.speedy = -Settings.velocidade
         if keystate[pygame.K_DOWN]:
-            self.speedy = 5
+            self.speedy = Settings.velocidade
         self.rect.y += self.speedy
 
         if self.rect.right > WIDTH:
@@ -802,7 +802,7 @@ while running:
             all_sprites.remove(bosses)
             running = False
             vitoria = True
-
+            Settings.COINS+= 500
 
     hits = pygame.sprite.groupcollide(mobs, lasers, True, False)
 
@@ -831,9 +831,19 @@ while running:
     pygame.display.flip()
 
 if Settings.currentlevel == 4 & vitoria == True:
-        Settings.currentlevel == 6
+
+        draw_text(screen, str("GANHOU"), 20, WIDTH / 2, 10)
+
+
+
+        Settings.currentlevel = 6
+
         running = True
 
+     
 
-time.sleep(1)
+
+
+
+
 pygame.quit() 
