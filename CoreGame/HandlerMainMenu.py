@@ -171,6 +171,11 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.bt_nav.clicked.connect(self.handlebtnav)
         self.bt_back.clicked.connect(self.handlerbtanterior)
         self.ls_freecoins.clicked.connect(self.handlerbtcoins)
+        self.lb_exit.clicked.connect(self.handlerexit)
+
+    def handlerexit(self):
+        exit(0)
+
 
     def handlerbtcoins(self):
         self.uiframe = CoinsGui(QtWidgets.QFrame(self.widget),self.label_3)
@@ -234,6 +239,11 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.bt_store.setStyleSheet(self.style)
         self.menu = 1
         self.mudarmenu()
+        self.bt_powerup.setVisible(True)
+        self.bt_nav.setVisible(True)
+        self.bt_play.setVisible(True)
+        self.nav_baixo.setVisible(True)
+        self.nivelescolhido.setVisible(True)
 
     def play(self):
         print(Settings.NAVIMG)
@@ -244,6 +254,13 @@ class MyFirstGuiProgram(Ui_Dialog):
         if check:
             Settings.currentlevel = Settings.BOSSESCOLHIDO
             Settings.NAVIMG = Settings.navlist[Settings.NAVESCOLHIDA]
+            Settings.velocidade = (self.navs.getnavs()[Settings.NAVESCOLHIDA].getvelocidade()/10)
+            Settings.disparo = (self.navs.getnavs()[Settings.NAVESCOLHIDA].getdisparo() / 10)
+            Settings.vidas = (self.navs.getnavs()[Settings.NAVESCOLHIDA].getvida() / 100)
+
+
+            print(str(Settings.NAVIMG))
+
             self.dialog.setEnabled(False)
             from CoreGame import game
             reload(game)
@@ -295,6 +312,11 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.frame.show()
         self.menu = 0
         self.mudarmenu()
+        self.bt_powerup.setVisible(True)
+        self.bt_nav.setVisible(True)
+        self.bt_play.setVisible(True)
+        self.nav_baixo.setVisible(True)
+        self.nivelescolhido.setVisible(True)
 
     def getlbnav(self):
         return self.nav_baixo

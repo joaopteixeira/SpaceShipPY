@@ -2,7 +2,10 @@ from _ast import Set
 
 import pygame
 import random
-from CoreGame import *
+import time
+
+
+
 from CoreGame import Settings
 
 WIDTH = Settings.WITDH    # Largura
@@ -496,6 +499,8 @@ class Explosion(pygame.sprite.Sprite):
 
 
 
+
+
 font_name = pygame.font.match_font('Chandas')
 def draw_text(surf, text, size, x, y):
     font = pygame.font.Font(font_name, size)
@@ -531,7 +536,25 @@ def newboss():
     bosses.add(bos)
 
 
+def crash():
+    draw_text(screen, str("VITORIA"), 120, WIDTH / 2, HEIGHT/2)
+    i=0
+    while True:
+        i+=1
+        for event in pygame.event.get():
+            # print(event)
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
 
+        # gameDisplay.fill(white)
+
+        if i==100:
+            pygame.quit()
+
+
+        pygame.display.update()
+        clock.tick(15)
 
 
 
@@ -599,7 +622,9 @@ while running:
 #PROGRESSAO DE INIMIGOS E NO FIM ENDBOSS
 
     if tempinho == 300:
+        crash()
         for j in range(1):
+
             newinim()
 
     if tempinho % 600 == 0:
@@ -800,9 +825,10 @@ while running:
             random.choice(expl_sounds).play()
             all_sprites.add(death_explosion)
             all_sprites.remove(bosses)
-            running = False
             vitoria = True
-            Settings.COINS+= 500
+            running = False
+
+
 
     hits = pygame.sprite.groupcollide(mobs, lasers, True, False)
 
@@ -825,25 +851,20 @@ while running:
     all_sprites.draw(screen)
 
     if Settings.currentlevel < 6:
-        draw_text(screen, str(pontos), 20, WIDTH / 2, 10)
+
         draw_shield_bar(screen, 5, 5, contador)
     # *after* drawing everything, flip the display
     pygame.display.flip()
 
+
+
+
+
+
 if Settings.currentlevel == 4 & vitoria == True:
-
-        draw_text(screen, str("GANHOU"), 20, WIDTH / 2, 10)
-
-
-
-        Settings.currentlevel = 6
-
+        Settings.currentlevel == 6
         running = True
 
-     
 
-
-
-
-
-pygame.quit() 
+time.sleep(1)
+pygame.quit()
