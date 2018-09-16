@@ -537,25 +537,26 @@ def newboss():
 
 
 def crash(frase):
-
+    run = True
     draw_text(screen, str(frase), 120, WIDTH / 2, HEIGHT/2)
     i=0
-    while True:
+    while run:
         i+=1
         for event in pygame.event.get():
             # print(event)
             if event.type == pygame.QUIT:
                 pygame.quit()
-                quit()
 
         # gameDisplay.fill(white)
 
         if i==50:
-            pygame.quit()
+            return False
 
 
         pygame.display.update()
         clock.tick(15)
+
+
 
 
 
@@ -742,7 +743,7 @@ while running:
         fim+=1
         if fim == 70:
             running = False
-            crash(frase)
+            running = crash(frase)
 
     hits = pygame.sprite.groupcollide(inimigos, bullets, True, True)
     for hit in hits:
@@ -825,11 +826,6 @@ while running:
 
 
 
-
-
-if Settings.currentlevel == 4 & vitoria == True:
-        Settings.currentlevel == 6
-        running = True
 
 
 time.sleep(1)
