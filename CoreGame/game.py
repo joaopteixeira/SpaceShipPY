@@ -625,11 +625,13 @@ while running:
 
 #PROGRESSAO DE INIMIGOS E NO FIM ENDBOSS
 
+
+
     if tempinho > 300:
-        if (tempinho - 300) % 200 == 0:
+        if (tempinho - 300) % (200/(Settings.currentlevel+1)) == 0:
             newinim()
 
-    if tempinho % 500 == 0:
+    if tempinho % (500/(Settings.currentlevel+1)) == 0:
         for i in range(5):
             newmob()
 
