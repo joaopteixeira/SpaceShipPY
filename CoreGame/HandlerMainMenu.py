@@ -23,6 +23,7 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.frame = self.uiframe.getframe()
         self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
         self.menu = 0
+        self.x = False
         self.navs = ServNav()
         self.pwups = ServPowerUp()
 
@@ -261,10 +262,21 @@ class MyFirstGuiProgram(Ui_Dialog):
 
             print(str(Settings.NAVIMG))
 
+
             self.dialog.setEnabled(False)
-            from CoreGame import game
-            reload(game)
+            if not self.x:
+                from CoreGame import game
+                self.x = True
+                self.game = game
+            elif self.x:
+                reload(self.game)
+
+            if Settings.currentlevel == 4:
+                Settings.currentlevel = 6
+                reload(game)
             self.dialog.setEnabled(True)
+
+
 
     def mudarmenu(self):
         if self.menu == 0:

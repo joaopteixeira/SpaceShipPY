@@ -625,82 +625,13 @@ while running:
 
 #PROGRESSAO DE INIMIGOS E NO FIM ENDBOSS
 
-    if tempinho == 300:
-
-        for j in range(1):
-
+    if tempinho > 300:
+        if (tempinho - 300) % 200 == 0:
             newinim()
 
-    if tempinho % 600 == 0:
+    if tempinho % 500 == 0:
+        for i in range(5):
             newmob()
-
-    if tempinho == 800 == 0:
-        for j in range(1):
-            newinim()
-
-    if tempinho == 1200:
-        newmob()
-
-    if tempinho == 1600:
-        newmob()
-
-    if tempinho == 1800:
-        for j in range(1):
-            newinim()
-
-    if tempinho == 2000:
-        newmob()
-
-    if tempinho == 2200:
-        newinim()
-
-    if tempinho == 2400:
-        newmob()
-
-    if tempinho == 2600:
-        newinim()
-
-    if tempinho == 3000:
-        newinim()
-
-    if tempinho == 3200:
-        newmob()
-
-    if tempinho == 3500:
-        newinim()
-
-    if tempinho == 3800:
-        newmob()
-
-    if tempinho == 4100:
-        newinim()
-
-    if tempinho == 4500:
-        newmob()
-
-    if tempinho == 4800:
-        newinim()
-
-    if tempinho == 5400:
-        newmob()
-
-    if tempinho == 5800:
-        newinim()
-
-    if tempinho == 6300:
-        newmob()
-
-    if tempinho == 6800:
-        newinim()
-
-    if tempinho == 7100:
-        newinim()
-
-    if tempinho == 7300:
-        newmob()
-
-    if tempinho == 6250:
-        newinim()
 
 
     if tempinho == 8200:
@@ -856,6 +787,10 @@ while running:
             vitoria = True
             boleano = True
             frase = "Ganhou!! Parabens"
+
+            if Settings.LEVELUNLOCKED[(len(Settings.LEVELUNLOCKED) - 1)] == Settings.currentlevel:
+                if Settings.currentlevel != 4:
+                    Settings.LEVELUNLOCKED.append(Settings.currentlevel + 1)
 
 
 

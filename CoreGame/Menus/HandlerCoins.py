@@ -1,5 +1,8 @@
 import random
 
+from PyQt5.QtGui import QIntValidator
+from PyQt5.uic.properties import QtGui
+
 from CoreGame import Settings
 from CoreGame.Menus.FrameCoins import Ui_Frame
 
@@ -44,17 +47,12 @@ class CoinsGui(Ui_Frame):
                                     background-color:transparent;
                                 color:transparent;
                                 }
-                                QPushButton:hover{
-                                    background-color:white;
-                                    color:#2b5259;
-
-                                }
+                                
 
                                 """
         self.i = 0
 
         self.bt_dice.setStyleSheet(self.styleright)
-        self.bt_roulette.setStyleSheet(self.styleleft)
         self.bt_roll.setStyleSheet("QPushButton{color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:#478db7;color:white;};")
         self.bt_over.setStyleSheet("QPushButton{color:#2b5259;background-repeat:no-repeat;background-color:transparent;background-position: center;margin: 1px;border-style: outset;}QPushButton:hover{background-color:#478db7;color:white;};")
 
@@ -62,6 +60,8 @@ class CoinsGui(Ui_Frame):
         self.bt_over.clicked.connect(self.handlerbtover)
         self.bt_under.clicked.connect(self.handlerbtunder)
         self.bt_roll.clicked.connect(self.handlerbtroll)
+
+
 
     def handlerbtover(self):
         self.diceou = 0
@@ -79,18 +79,19 @@ class CoinsGui(Ui_Frame):
 
     def handlerbtroll(self):
 
-        if self.te_aposta.toPlainText() != "" and self.diceou != -1 and Settings.COINS >= int(self.te_aposta.toPlainText()):
+
+        if self.te_aposta.toPlainText() != "" and self.diceou != -1 and Settings.COINS >= int(
+                self.te_aposta.toPlainText()):
             numero = random.randrange(50000)
 
-
-            Settings.COINS-=int(self.te_aposta.toPlainText())
+            Settings.COINS -= int(self.te_aposta.toPlainText())
             self.coins.setText(str(Settings.COINS))
 
             if numero < 25000 and self.diceou == 1:
                 self.lb_numeroi.setStyleSheet(
                     "QPushButton{color:#2b5259;background-repeat:no-repeat;background-color:#47b7a1;background-position: center;margin: 1px;border-style: outset;}")
 
-                Settings.COINS += (int(self.te_aposta.toPlainText())*2)
+                Settings.COINS += (int(self.te_aposta.toPlainText()) * 2)
                 self.coins.setText(str(Settings.COINS))
 
             elif numero >= 25000 and self.diceou == 0:
@@ -103,6 +104,7 @@ class CoinsGui(Ui_Frame):
                     "QPushButton{color:#2b5259;background-repeat:no-repeat;background-color:#b74759;background-position: center;margin: 1px;border-style: outset;}")
 
             self.lb_numeroi.setText(str(numero))
+
 
 
     def getframe(self):
