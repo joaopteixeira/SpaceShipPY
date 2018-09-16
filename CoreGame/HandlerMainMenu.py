@@ -22,6 +22,38 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.uiframe = NivelGui(QtWidgets.QFrame(self.widget),self.menunivel,self.nivelescolhido)
         self.frame = self.uiframe.getframe()
         self.frame.setGeometry(QtCore.QRect(0, 70, 1131, 651))
+
+        Settings.NAVUNLOCKED.clear()
+        Settings.LEVELUNLOCKED.clear()
+
+        ref_arquivo = open("variaveis.txt", "r")
+
+        #ref_arquivo.write(Settings.NAVUNLOCKED.__str__())
+
+        lines = ref_arquivo.readlines()
+
+        ref_arquivo.close()
+
+        navs = str(lines[0]).replace("\n",'')
+        Settings.COINS = int(lines[1])
+        levels = str(lines[2]).replace("\n",'')
+        pw1 = str(lines[3]).replace("\n",'').split(":")
+
+
+        for n in navs:
+            Settings.NAVUNLOCKED.append(int(n))
+
+        for l in levels:
+            Settings.LEVELUNLOCKED.append(int(l))
+
+
+        for j in range(3):
+            for k in pw1[j]:
+                Settings.POWERUPUNLOCKED[j].append(int(k))
+
+
+
+
         self.menu = 0
         self.x = False
         self.game = 0
@@ -176,6 +208,22 @@ class MyFirstGuiProgram(Ui_Dialog):
         self.lb_exit.clicked.connect(self.handlerexit)
 
     def handlerexit(self):
+
+        ref_arquivo = open("variaveis.txt", "w")
+
+        ref_arquivo.write(str(Settings.NAVUNLOCKED.__str__().replace("[","").replace("]","").replace(",","").replace(" ","")))
+        ref_arquivo.write("\n")
+        ref_arquivo.write(str(Settings.COINS))
+        ref_arquivo.write("\n")
+        ref_arquivo.write(Settings.LEVELUNLOCKED.__str__().replace("[","").replace("]","").replace(",","").replace(" ",""))
+        ref_arquivo.write("\n")
+        ref_arquivo.write(Settings.POWERUPUNLOCKED.__str__().replace("[","").replace("]","").replace(",",":").replace(" ",""))
+
+
+
+
+        ref_arquivo.close()
+
         exit(0)
 
 

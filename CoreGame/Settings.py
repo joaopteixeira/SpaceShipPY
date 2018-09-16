@@ -1,4 +1,7 @@
 
+
+
+
 navlist = ["player1.png", "player2.png", "player3.png"]
 
 NAVUNLOCKED = [0,1,2]
@@ -19,7 +22,7 @@ COINS = 1000
 NAVSELECTED = 0
 NAVESCOLHIDA = 0
 
-LEVELUNLOCKED = [0,1,2,3,4]
+LEVELUNLOCKED = [0]
 
 
 vidas = 6 #Vida do player
@@ -27,7 +30,7 @@ vidas = 6 #Vida do player
 
 
 
-currentlevel = 3  #qual o nivel selecionado 5 é o endless, 6 o creditos
+currentlevel = 0  #qual o nivel selecionado 5 é o endless, 6 o creditos
 
 
 
